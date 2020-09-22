@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.Mediator\Schmidt.Softplan.TechnicalEvaluation.Mediator.csproj" />
+    <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.Query.Data\Schmidt.Softplan.TechnicalEvaluation.Query.Data.csproj" />
+    <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.Query.Model\Schmidt.Softplan.TechnicalEvaluation.Query.Model.csproj" />
+  </ItemGroup>
+
+</Project>

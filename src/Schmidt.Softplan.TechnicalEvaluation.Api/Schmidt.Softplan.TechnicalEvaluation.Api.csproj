@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.Application\Schmidt.Softplan.TechnicalEvaluation.Application.csproj" />
+    <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.Query.Application\Schmidt.Softplan.TechnicalEvaluation.Query.Application.csproj" />
+  </ItemGroup>
+
+</Project>
