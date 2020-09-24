@@ -1,6 +1,7 @@
 ﻿using Schmidt.Softplan.TechnicalEvaluation.Common.Exception;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
 {
@@ -54,6 +55,12 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
                                 segredoJustica,
                                 situacao,
                                 responsaveis);
+        }
+        public void AddResponsavel(Responsavel responsavel)
+        {
+            var responsaveis = Responsaveis?.ToList() ?? new List<Responsavel>();
+            responsaveis.Add(responsavel);
+            Responsaveis = responsaveis;
         }
     }
 }

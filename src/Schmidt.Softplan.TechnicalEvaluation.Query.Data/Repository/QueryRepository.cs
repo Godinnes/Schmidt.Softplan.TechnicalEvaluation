@@ -20,5 +20,21 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Data.Repository
                     .AsNoTracking();
             }
         }
+        public IQueryable<Responsavel> Responsaveis
+        {
+            get
+            {
+                return _context.Set<Responsavel>()
+                    .AsNoTracking();
+            }
+        }
+        public IQueryable<Situacao> Situacoes
+        {
+            get
+            {
+                return _context.Set<Situacao>()
+                    .AsNoTracking();
+            }
+        }
     }
 }

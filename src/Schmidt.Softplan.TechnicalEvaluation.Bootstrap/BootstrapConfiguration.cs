@@ -33,6 +33,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Bootstrap
             });
 
             services.AddScoped<IProcessoRepository, ProcessoRepository>();
+            services.AddScoped<IResponsavelRepository, ResponsavelRepository>();
             services.AddScoped<IQueryRepository, QueryRepository>();
         }
         private static string GetConnectionString(this IConfiguration configuration) => configuration["Database:ConnectionString"];

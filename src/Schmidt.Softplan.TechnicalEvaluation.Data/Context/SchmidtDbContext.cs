@@ -11,7 +11,6 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Context
                                 IServiceProvider serviceProvider)
             : base(context, serviceProvider)
         {
-            context.Database.EnsureCreated();
         }
     }
 }

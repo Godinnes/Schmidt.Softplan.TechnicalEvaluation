@@ -6,5 +6,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Data.Abstraction
     public interface IQueryRepository
     {
         IQueryable<Processo> Processos { get; }
+        IQueryable<Responsavel> Responsaveis { get; }
+        IQueryable<Situacao> Situacoes { get; }
     }
 }

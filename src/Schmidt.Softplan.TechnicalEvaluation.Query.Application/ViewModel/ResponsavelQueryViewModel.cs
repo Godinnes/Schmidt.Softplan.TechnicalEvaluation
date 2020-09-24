@@ -7,12 +7,14 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.ViewModel
     {
         public Guid ID { get; set; }
         public string Nome { get; set; }
+        public string CPF { get; set; }
         public static implicit operator ResponsavelQueryViewModel(Responsavel responsavel)
         {
             return new ResponsavelQueryViewModel()
             {
                 ID = responsavel.ID,
-                Nome = responsavel.Nome
+                Nome = responsavel.Nome,
+                CPF = responsavel.CPF
             };
         }
     }
