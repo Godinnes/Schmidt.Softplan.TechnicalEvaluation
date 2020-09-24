@@ -120,6 +120,9 @@
   <data name="CPFInvalidException" xml:space="preserve">
     <value>CPF não é válido.</value>
   </data>
+  <data name="ProcessoIsFinalizedSituacaoException" xml:space="preserve">
+    <value>Processo está com a situação finalizada.</value>
+  </data>
   <data name="ProcessoNumeroProcessoUnificadoAlreadyExistisException" xml:space="preserve">
     <value>Já existe um processo com este número.</value>
   </data>

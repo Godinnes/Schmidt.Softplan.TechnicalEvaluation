@@ -23,7 +23,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
             {
                 build.ToTable("Processos");
                 build.HasKey(k => k.ID);
-                build.HasOne(p => p.Situacao).WithMany().HasForeignKey(p => p.SituationID);
+                build.HasOne(p => p.Situacao).WithMany().HasForeignKey(p => p.SituacaoID);
                 build.HasMany(p => p.Responsaveis);
             });
             modelBuilder.Entity<Responsavel>(build =>
@@ -37,7 +37,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
             {
                 build.ToTable("Situacoes");
                 build.HasKey(k => k.ID);
-                build.HasMany<Processo>().WithOne().HasForeignKey(p => p.SituationID);
+                build.HasMany<Processo>().WithOne().HasForeignKey(p => p.SituacaoID);
             });
 
             base.OnModelCreating(modelBuilder);

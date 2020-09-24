@@ -71,6 +71,15 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Processo está com a situação finalizada..
+        /// </summary>
+        public static string ProcessoIsFinalizedSituacaoException {
+            get {
+                return ResourceManager.GetString("ProcessoIsFinalizedSituacaoException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Já existe um processo com este número..
         /// </summary>
         public static string ProcessoNumeroProcessoUnificadoAlreadyExistisException {
