@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Schmidt.Softplan.TechnicalEvaluation.Domain.DomainEvents.Responsaveis;
+using Schmidt.Softplan.TechnicalEvaluation.Domain.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,6 +8,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
 {
     public class Responsavel : Abstraction.Entity
     {
+        public Guid ID { get; private set; }
         public string Nome { get; private set; }
         public string CPF { get; private set; }
         public string Email { get; private set; }
@@ -20,9 +23,11 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
         {
             ID = id;
             Nome = nome;
-            CPF = cpf;
+            CPF = ValidCPF(cpf);
             Email = email;
             Foto = foto;
+
+            AddDomainEvent(new CreateResponsavelDomainEvent(this));
         }
         public static Responsavel Create(string nome,
                                          string cpf,
@@ -41,15 +46,21 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
                            string foto)
         {
             Nome = nome;
-            CPF = cpf;
+            CPF = ValidCPF(cpf);
             Email = email;
             Foto = foto;
+
+            AddDomainEvent(new ChangeResponsavelDomainEvent(this));
         }
         public void AddProcesso(Processo processo)
         {
             var processos = Processos?.ToList() ?? new List<Processo>();
             processos.Add(processo);
             Processos = processos;
+        }
+        private string ValidCPF(string cpf)
+        {
+            return new CPFValueObject(cpf).Value;
         }
     }
 }

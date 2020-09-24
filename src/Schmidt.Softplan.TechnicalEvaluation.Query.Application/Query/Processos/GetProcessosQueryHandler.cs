@@ -23,6 +23,8 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.Query.Processos
             var take = request.Take ?? 10;
 
             var processos = await _repository.Processos
+                .Include(a => a.Situacao)
+                .Include(a => a.Responsaveis)
                 .Where(ProcessoSpecification.ProcessoDestribuicaoBetween(request.InicioDistribuicao, request.FimDistribuicao))
                 .Where(ProcessoSpecification.ProcessoNumeroProcessoUnificado(request.NumeroProcessoUnificado))
                 .Where(ProcessoSpecification.ProcessoResponsavel(request.Responsavel))

@@ -19,11 +19,11 @@ namespace Schmidt.Softplan.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddApi(Configuration);
+
             services.AddControllers();
 
             services.AddSwaggerGen();
-
-            services.AddApi(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,6 +33,8 @@ namespace Schmidt.Softplan.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseApi();
 
             app.UseSwagger();
 

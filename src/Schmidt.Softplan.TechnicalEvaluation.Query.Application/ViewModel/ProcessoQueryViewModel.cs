@@ -14,7 +14,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.ViewModel
         public string PastaFisicaCliente { get; set; }
         public string Descricao { get; set; }
         public SituacaoQueryViewModel Situacao { get; set; }
-        public IEnumerable<ResponsavelQueryViewModel> Responsavel { get; set; }
+        public IEnumerable<ResponsavelQueryViewModel> Responsaveis { get; set; }
         public static implicit operator ProcessoQueryViewModel(Processo processo)
         {
             return new ProcessoQueryViewModel()
@@ -26,7 +26,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.ViewModel
                 PastaFisicaCliente = processo.PastaFisicaCliente,
                 Descricao = processo.Descricao,
                 Situacao = processo.Situacao,
-                Responsavel = processo.Responsaveis.ToViewModel()
+                Responsaveis = processo.Responsaveis.ToViewModel()
             };
         }
     }

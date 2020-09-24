@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.Api\Schmidt.Softplan.TechnicalEvaluation.Api.csproj" />
     <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.Application\Schmidt.Softplan.TechnicalEvaluation.Application.csproj" />
     <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.Data\Schmidt.Softplan.TechnicalEvaluation.Data.csproj" />
     <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.Mediator\Schmidt.Softplan.TechnicalEvaluation.Mediator.csproj" />

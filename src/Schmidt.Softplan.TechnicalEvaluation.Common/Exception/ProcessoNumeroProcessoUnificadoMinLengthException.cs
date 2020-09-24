@@ -2,7 +2,7 @@
 
 namespace Schmidt.Softplan.TechnicalEvaluation.Common.Exception
 {
-    public class ProcessoNumeroProcessoUnificadoMinLengthException : ArgumentException
+    public class ProcessoNumeroProcessoUnificadoLengthException : ArgumentException
     {
     }
 }

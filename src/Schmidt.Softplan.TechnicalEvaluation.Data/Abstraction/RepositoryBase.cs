@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Schmidt.Softplan.TechnicalEvaluation.Domain.Abstraction;
 using Schmidt.Softplan.TechnicalEvaluation.Mediator.Abstraction;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
@@ -11,7 +11,6 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
     public abstract class RepositoryBase<TEntity>
         where TEntity : Entity
     {
-        private List<IDomainEvent> BeforeDomainEvents;
         private readonly ISchmidtMediator _mediator;
         protected readonly DbContext Context;
         public RepositoryBase(DbContext context,
@@ -22,7 +21,6 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
             Entity = context.Set<TEntity>();
 
             _mediator = serviceProvider.GetRequiredService<ISchmidtMediator>();
-            BeforeDomainEvents = new List<IDomainEvent>();
         }
         public DbSet<TEntity> Entity { get; private set; }
         public async virtual Task<TEntity> FindAsync(Guid id)
@@ -39,7 +37,8 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
         }
         public async virtual Task SaveChangesAsync()
         {
-            foreach (var domainEvent in BeforeDomainEvents)
+            var events = Context.ChangeTracker.Entries().Select(a => a.Entity as TEntity).Where(e => e?.Events?.Any() == true).SelectMany(a => a.Events);
+            foreach (var domainEvent in events)
             {
                 await _mediator.SendAsync(domainEvent);
             }

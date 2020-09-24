@@ -8,20 +8,28 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Application.Command.Processos
 {
     public class CreateProcessoCommandHandler : CommandHandlerAsync<CreateProcessoCommand, Guid>
     {
+        private readonly IResponsavelRepository _responsavelRepository;
         private readonly IProcessoRepository _processoRepository;
-        public CreateProcessoCommandHandler(IProcessoRepository processoRepository)
+        private readonly ISituacaoRepository _situacaoRepository;
+        public CreateProcessoCommandHandler(IProcessoRepository processoRepository,
+                                            IResponsavelRepository responsavelRepository,
+                                            ISituacaoRepository situacaoRepository)
         {
             _processoRepository = processoRepository;
+            _responsavelRepository = responsavelRepository;
+            _situacaoRepository = situacaoRepository;
         }
         public async override Task<Guid> HandleAsync(CreateProcessoCommand request)
         {
+            var responsaveis = await _responsavelRepository.GetResponsaveisByIDsAync(request.Responsaveis);
+            var situacao = await _situacaoRepository.FindAsync(request.SituacaoID);
             var newProcesso = Processo.Create(request.NumeroProcessoUnificado,
                                               request.Distribuicao,
                                               request.PastaFisicaCliente,
                                               request.Descricao,
                                               request.SegredoJustica,
-                                              request.SituacaoID,
-                                              null);
+                                              situacao,
+                                              responsaveis);
             _processoRepository.Add(newProcesso);
             await _processoRepository.SaveChangesAsync();
             return newProcesso.ID;

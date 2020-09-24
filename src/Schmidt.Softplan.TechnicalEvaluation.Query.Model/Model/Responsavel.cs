@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Schmidt.Softplan.TechnicalEvaluation.Query.Model.Model
 {
@@ -9,5 +10,6 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Model.Model
         public string CPF { get; set; }
         public string Email { get; set; }
         public string Foto { get; set; }
+        public IEnumerable<Processo> Processos { get; set; }
     }
 }
