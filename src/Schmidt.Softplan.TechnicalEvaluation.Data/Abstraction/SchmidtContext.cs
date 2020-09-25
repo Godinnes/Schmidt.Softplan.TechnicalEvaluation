@@ -23,6 +23,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
             {
                 build.ToTable("Processos");
                 build.HasKey(k => k.ID);
+                build.Property(p => p.NumeroProcessoUnificado).IsRequired().HasMaxLength(20);
                 build.HasOne(p => p.Situacao).WithMany().HasForeignKey(p => p.SituacaoID);
                 build.HasMany(p => p.Responsaveis);
             });
@@ -31,12 +32,15 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
                 build.ToTable("Responsaveis");
                 build.HasKey(k => k.ID);
                 build.Property(p => p.CPF).IsRequired().HasMaxLength(11);
+                build.Property(p => p.Nome).IsRequired().HasMaxLength(150);
+                build.Property(p => p.Email).IsRequired().HasMaxLength(400);
                 build.HasMany(p => p.Processos);
             });
             modelBuilder.Entity<Situacao>(build =>
             {
                 build.ToTable("Situacoes");
                 build.HasKey(k => k.ID);
+                build.Property(p => p.Nome).IsRequired().HasMaxLength(12);
                 build.HasMany<Processo>().WithOne().HasForeignKey(p => p.SituacaoID);
             });
 

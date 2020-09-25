@@ -71,6 +71,15 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to E-mail não é válido..
+        /// </summary>
+        public static string EmailInvalidException {
+            get {
+                return ResourceManager.GetString("EmailInvalidException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Processo está com a situação finalizada..
         /// </summary>
         public static string ProcessoIsFinalizedSituacaoException {
@@ -89,7 +98,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Número de processo unificado precisa 20 catacteres..
+        ///   Looks up a localized string similar to Número de processo unificado precisa {0} catacteres..
         /// </summary>
         public static string ProcessoNumeroProcessoUnificadoLengthException {
             get {
@@ -112,6 +121,42 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Common.Resources {
         public static string ResponsavelCPFAlreadyExistsException {
             get {
                 return ResourceManager.GetString("ResponsavelCPFAlreadyExistsException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail é obrigatório..
+        /// </summary>
+        public static string ResponsavelEmailIsRequiredException {
+            get {
+                return ResourceManager.GetString("ResponsavelEmailIsRequiredException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail não pode ter mais de {0} caracteres..
+        /// </summary>
+        public static string ResponsavelEmailMaxLengthException {
+            get {
+                return ResourceManager.GetString("ResponsavelEmailMaxLengthException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nome do responsável é obrigatório..
+        /// </summary>
+        public static string ResponsavelNomeIsRequiredException {
+            get {
+                return ResourceManager.GetString("ResponsavelNomeIsRequiredException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nome não pode ter mais de {0} caracteres..
+        /// </summary>
+        public static string ResponsavelNomeMaxLengthException {
+            get {
+                return ResourceManager.GetString("ResponsavelNomeMaxLengthException", resourceCulture);
             }
         }
     }

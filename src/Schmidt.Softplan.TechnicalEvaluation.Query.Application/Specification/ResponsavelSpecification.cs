@@ -1,4 +1,5 @@
-﻿using Schmidt.Softplan.TechnicalEvaluation.Query.Model.Model;
+﻿using Schmidt.Softplan.TechnicalEvaluation.Common.ValueObjects;
+using Schmidt.Softplan.TechnicalEvaluation.Query.Model.Model;
 using System;
 using System.Linq.Expressions;
 
@@ -17,8 +18,8 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.Specification
         {
             if (string.IsNullOrWhiteSpace(cpf))
                 return p => true;
-
-            return p => p.CPF == cpf;
+            var clearCPF = new CPFValueObject(cpf).Value;
+            return p => p.CPF == clearCPF;
         }
         public static Expression<Func<Responsavel, bool>> ResponsavelNumeroProcessoUnificado(string numeroProcessoUnificado)
         {

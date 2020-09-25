@@ -18,7 +18,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
         {
         }
 
-        [Given(@"a responsavel (.*), CPF (.*), Email (.*)")]
+        [Given(@"a responsavel '(.*)', CPF '(.*)', Email '(.*)'")]
         public async Task GivenResponsavel(string nome, string cpf, string email)
         {
             var command = new CreateResponsavelCommand()

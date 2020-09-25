@@ -79,10 +79,11 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
         }
         private string ValidateNumeroProcessoUnificado(string numeroProcessoUnificado)
         {
+            var lengthRequired = 20;
             if (string.IsNullOrWhiteSpace(numeroProcessoUnificado))
                 throw new ProcessoNumeroProcessoUnificadoNullException();
-            if (numeroProcessoUnificado.Length != 20)
-                throw new ProcessoNumeroProcessoUnificadoLengthException();
+            if (numeroProcessoUnificado.Length != lengthRequired)
+                throw new ProcessoNumeroProcessoUnificadoLengthException(lengthRequired);
             return numeroProcessoUnificado;
         }
     }

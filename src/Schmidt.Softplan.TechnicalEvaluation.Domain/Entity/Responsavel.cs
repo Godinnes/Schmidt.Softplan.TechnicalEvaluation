@@ -1,4 +1,6 @@
-﻿using Schmidt.Softplan.TechnicalEvaluation.Domain.DomainEvents.Responsaveis;
+﻿using Schmidt.Softplan.TechnicalEvaluation.Common.Exception;
+using Schmidt.Softplan.TechnicalEvaluation.Common.ValueObjects;
+using Schmidt.Softplan.TechnicalEvaluation.Domain.DomainEvents.Responsaveis;
 using Schmidt.Softplan.TechnicalEvaluation.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -22,9 +24,9 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
                             string foto)
         {
             ID = id;
-            Nome = nome;
+            Nome = ValidNome(nome);
             CPF = ValidCPF(cpf);
-            Email = email;
+            Email = ValidEmail(email);
             Foto = foto;
 
             AddDomainEvent(new CreateResponsavelDomainEvent(this));
@@ -45,9 +47,9 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
                            string email,
                            string foto)
         {
-            Nome = nome;
+            Nome = ValidNome(nome);
             CPF = ValidCPF(cpf);
-            Email = email;
+            Email = ValidEmail(email);
             Foto = foto;
 
             AddDomainEvent(new ChangeResponsavelDomainEvent(this));
@@ -61,6 +63,25 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
         private string ValidCPF(string cpf)
         {
             return new CPFValueObject(cpf).Value;
+        }
+        private string ValidNome(string nome)
+        {
+            if (string.IsNullOrWhiteSpace(nome))
+                throw new ResponsavelNomeIsRequiredException();
+            var maxLength = 150;
+            if (nome.Length > maxLength)
+                throw new ResponsavelNomeMaxLengthException(maxLength);
+            return nome;
+        }
+        private string ValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                throw new ResponsavelEmailIsRequiredException();
+            var maxLength = 400;
+            if (email.Length > maxLength)
+                throw new ResponsavelEmailMaxLengthException(maxLength);
+            return new EmailValueObject(email).Value;
+
         }
     }
 }

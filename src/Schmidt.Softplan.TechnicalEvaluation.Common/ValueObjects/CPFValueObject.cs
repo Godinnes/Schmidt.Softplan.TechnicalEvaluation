@@ -1,6 +1,6 @@
 ﻿using Schmidt.Softplan.TechnicalEvaluation.Common.Exception;
 
-namespace Schmidt.Softplan.TechnicalEvaluation.Domain.ValueObjects
+namespace Schmidt.Softplan.TechnicalEvaluation.Common.ValueObjects
 {
     public struct CPFValueObject
     {
