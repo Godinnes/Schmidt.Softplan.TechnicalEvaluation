@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using Schmidt.Softplan.TechnicalEvaluation.Application.Command.Responsaveis;
+using Schmidt.Softplan.TechnicalEvaluation.Common.Exception;
 using Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction;
-using Schmidt.Softplan.TechnicalEvaluation.ExceptionHandler.Abstraction;
+using Schmidt.Softplan.TechnicalEvaluation.Query.Application.Query.Responsaveis;
 using Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Drivers;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
@@ -32,10 +34,20 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
             {
                 ResponsavelID = await Mediator.SendAsync(command);
             }
-            catch (FriendlyException ex)
+            catch (Exception ex)
             {
                 AddException(ex);
             }
+        }
+        [Then(@"I search by CPF '(.*)'")]
+        public async Task ThenISearchByCPF(string cpf)
+        {
+            var query = new GetResponsaveisQuery()
+            {
+                CPF = cpf
+            };
+            var responsaveis = await Mediator.SendAsync(query);
+            Assert.AreEqual(1, responsaveis.Count());
         }
 
         [Then(@"I have a responsavel")]
@@ -48,7 +60,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
         [Then(@"I have a exception")]
         public void ThenIHaveAException()
         {
-            Assert.AreEqual(1, ExpectedExceptions.Count());
+            Assert.AreEqual(1, ExpectedExceptions.Where(e => e is TechnicalEvaluationException).Count());
         }
 
     }

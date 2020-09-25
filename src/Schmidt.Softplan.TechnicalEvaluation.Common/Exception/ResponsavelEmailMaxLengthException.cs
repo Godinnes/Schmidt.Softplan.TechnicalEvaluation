@@ -1,8 +1,6 @@
-﻿using Schmidt.Softplan.TechnicalEvaluation.ExceptionHandler.Abstraction;
-
-namespace Schmidt.Softplan.TechnicalEvaluation.Common.Exception
+﻿namespace Schmidt.Softplan.TechnicalEvaluation.Common.Exception
 {
-    public class ResponsavelEmailMaxLengthException : FriendlyException
+    public class ResponsavelEmailMaxLengthException : TechnicalEvaluationException
     {
         public ResponsavelEmailMaxLengthException(int length)
             : base(new[] { length.ToString() })

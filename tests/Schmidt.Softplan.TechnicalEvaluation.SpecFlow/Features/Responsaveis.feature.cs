@@ -103,7 +103,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "losdaconceicao@landovale.com.br\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
- testRunner.Then("I have a responsavel", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I search by CPF \'173.234.992-40\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

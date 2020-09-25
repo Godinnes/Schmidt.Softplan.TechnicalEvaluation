@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace Schmidt.Softplan.TechnicalEvaluation.Common.Exception
+﻿namespace Schmidt.Softplan.TechnicalEvaluation.Common.Exception
 {
-    public class ProcessoNumeroProcessoUnificadoNullException : ArgumentNullException
+    public class ProcessoNumeroProcessoUnificadoNullException : TechnicalEvaluationException
     {
     }
 }

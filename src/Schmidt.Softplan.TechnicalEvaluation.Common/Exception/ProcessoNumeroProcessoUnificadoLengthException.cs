@@ -1,8 +1,6 @@
-﻿using Schmidt.Softplan.TechnicalEvaluation.ExceptionHandler.Abstraction;
-
-namespace Schmidt.Softplan.TechnicalEvaluation.Common.Exception
+﻿namespace Schmidt.Softplan.TechnicalEvaluation.Common.Exception
 {
-    public class ProcessoNumeroProcessoUnificadoLengthException : FriendlyException
+    public class ProcessoNumeroProcessoUnificadoLengthException : TechnicalEvaluationException
     {
         public ProcessoNumeroProcessoUnificadoLengthException(int length)
             : base(new[] { length.ToString() })

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Schmidt.Softplan.TechnicalEvaluation.ExceptionHandler.Abstraction;
 using System;
 using System.Net;
 using System.Threading.Tasks;
@@ -23,11 +22,6 @@ namespace Schmidt.Softplan.TechnicalEvaluation.ExceptionHandler.Implementation
             {
                 await next(context);
             }
-            catch (FriendlyException ex)
-            {
-                _logger.LogError($"Unexpected error: {ex.Message}");
-                await HandleExceptionAsync(context, ex);
-            }
             catch (Exception ex)
             {
                 _logger.LogError($"Unexpected error: {ex.Message}");
@@ -43,8 +37,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.ExceptionHandler.Implementation
             var json = new
             {
                 context.Response.StatusCode,
-                Message = "An error occurred whilst processing your request",
-                Detailed = exception
+                Message = exception.Message,
             };
 
             return context.Response.WriteAsync(JsonConvert.SerializeObject(json));
