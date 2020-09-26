@@ -62,6 +62,8 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
         }
         private string ValidCPF(string cpf)
         {
+            if (string.IsNullOrWhiteSpace(cpf))
+                throw new CPFIsRequiredException();
             return new CPFValueObject(cpf).Value;
         }
         private string ValidNome(string nome)

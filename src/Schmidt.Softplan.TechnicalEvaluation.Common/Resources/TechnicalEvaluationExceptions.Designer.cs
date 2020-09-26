@@ -71,6 +71,15 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CPF é obrigatório..
+        /// </summary>
+        public static string CPFIsRequiredException {
+            get {
+                return ResourceManager.GetString("CPFIsRequiredException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-mail não é válido..
         /// </summary>
         public static string EmailInvalidException {

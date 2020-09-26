@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using Schmidt.Softplan.TechnicalEvaluation.Application.Command.Responsaveis;
-using Schmidt.Softplan.TechnicalEvaluation.Common.Exception;
 using Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction;
 using Schmidt.Softplan.TechnicalEvaluation.Query.Application.Query.Responsaveis;
 using Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Drivers;
@@ -57,10 +56,10 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
             var responsavel = await repository.FindAsync(ResponsavelID);
             Assert.NotNull(responsavel);
         }
-        [Then(@"I have a exception")]
-        public void ThenIHaveAException()
+        [Then(@"I have a exception '(.*)'")]
+        public void ThenIHaveAException(string message)
         {
-            Assert.AreEqual(1, ExpectedExceptions.Where(e => e is TechnicalEvaluationException).Count());
+            Assert.IsTrue(ExpectedExceptions.Where(e => e.Message == message).Any());
         }
 
     }

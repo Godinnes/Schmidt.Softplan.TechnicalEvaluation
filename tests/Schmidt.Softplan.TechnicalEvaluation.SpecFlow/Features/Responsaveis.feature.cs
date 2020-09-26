@@ -103,7 +103,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "losdaconceicao@landovale.com.br\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
- testRunner.Then("I search by CPF \'173.234.992-40\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I have a responsavel", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -140,7 +140,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "igueljoaodamota@mx.labinal.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 11
- testRunner.Then("I have a exception", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I have a exception \'CPF não é válido.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -177,7 +177,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "lipebrenocavalcanti@superigi.com.br\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 15
- testRunner.Then("I have a exception", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I have a exception \'CPF é obrigatório.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -214,7 +214,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "bdalathomaz.adv.br\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 19
- testRunner.Then("I have a exception", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I have a exception \'Nome do responsável é obrigatório.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -250,7 +250,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given(@"a responsavel 'Sarah Helena Josefa da Cunha Miguel João da Mota Carlos da Conceição Sarah Helena Josefa da Cunha Miguel João da Mota Carlos da Conceição Sarah Helena Josefa da Cunha Miguel João da Mota Carlos da Conceição', CPF '758.497.565-82', Email 'sarahhelenajosefadacunha-78@premierpet.com.br'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 23
- testRunner.Then("I have a exception", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I have a exception \'Nome não pode ter mais de 150 caracteres.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -286,7 +286,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("a responsavel \'Liz Luciana Jennifer Barros\', CPF \'686.287.803-43\', Email \'\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 27
- testRunner.Then("I have a exception", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I have a exception \'E-mail é obrigatório.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -323,7 +323,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "afernandabrendafigueiredo__elzafernandabrendafigueiredo@\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 31
- testRunner.Then("I have a exception", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I have a exception \'E-mail não é válido.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -359,7 +359,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given(@"a responsavel 'Aparecida Josefa Fogaça', CPF '117.815.631-10', Email 'aparecidajosefafogaca_aparecidajosefafogaca_aparecidajosefafogaca_aparecidajosefafogaca_aparecidajosefafogaca_aparecidajosefafogaca_aparecidajosefafogaca_aparecidajosefafogaca_aparecidajosefafogaca_aparecidajosefafogaca_aparecidajosefafogaca_aparecidajosefafogaca_aparecidajosefafogaca_aparecidajosefafogaca_aparecidajosefafogaca_aparecidajosefafogaca_aparecidajosefafogaca_aparecidajosefafogaca_aparecidajosefafogaca_@santarte.com'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 35
- testRunner.Then("I have a exception", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I have a exception \'E-mail não pode ter mais de 400 caracteres.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -400,7 +400,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "ao..joanaisisassuncao@devuono.com.br\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 40
- testRunner.Then("I have a exception", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I have a exception \'Já existe um responsável com este CPF.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
