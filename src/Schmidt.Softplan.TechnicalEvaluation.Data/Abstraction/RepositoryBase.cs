@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Schmidt.Softplan.TechnicalEvaluation.Domain.Abstraction;
-using Schmidt.Softplan.TechnicalEvaluation.Mediator.Abstraction;
+using Schmidt.Softplan.TechnicalEvaluation.Mediator.Interfaces;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -40,7 +40,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
             var events = Context.ChangeTracker.Entries().Select(a => a.Entity as TEntity).Where(e => e?.Events?.Any() == true).SelectMany(a => a.Events);
             foreach (var domainEvent in events)
             {
-                await _mediator.SendAsync(domainEvent);
+                await _mediator.PublishAsync(domainEvent);
             }
 
             await Context.SaveChangesAsync();

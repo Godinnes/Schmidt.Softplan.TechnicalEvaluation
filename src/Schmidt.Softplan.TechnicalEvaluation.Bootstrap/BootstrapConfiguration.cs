@@ -3,9 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Schmidt.Softplan.TechnicalEvaluation.Application.Command.Processos;
-using Schmidt.Softplan.TechnicalEvaluation.Application.DomainEventHandler.Responsavel;
+using Schmidt.Softplan.TechnicalEvaluation.Application.DomainEventHandler.Responsaveis;
 using Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction;
 using Schmidt.Softplan.TechnicalEvaluation.Data.Repository;
+using Schmidt.Softplan.TechnicalEvaluation.Domain.Abstraction;
+using Schmidt.Softplan.TechnicalEvaluation.Domain.Services;
 using Schmidt.Softplan.TechnicalEvaluation.ExceptionHandler.Extensions;
 using Schmidt.Softplan.TechnicalEvaluation.Mediator.Extensions;
 using Schmidt.Softplan.TechnicalEvaluation.Query.Application.Query.Processos;
@@ -42,6 +44,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Bootstrap
             services.AddScoped<IResponsavelRepository, ResponsavelRepository>();
             services.AddScoped<ISituacaoRepository, SituacaoRepository>();
             services.AddScoped<IQueryRepository, QueryRepository>();
+            services.AddScoped<IDateTimeService, DateTimeService>();
         }
         private static string GetConnectionString(this IConfiguration configuration) => configuration["Database:ConnectionString"];
         public static void UseApi(this IApplicationBuilder app)

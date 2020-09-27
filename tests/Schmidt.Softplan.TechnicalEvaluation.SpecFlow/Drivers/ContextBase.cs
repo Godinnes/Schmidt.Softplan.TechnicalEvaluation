@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Schmidt.Softplan.TechnicalEvaluation.Mediator.Abstraction;
+using Schmidt.Softplan.TechnicalEvaluation.Mediator.Interfaces;
 using Schmidt.Softplan.TechnicalEvaluation.Query.Application.ViewModel;
 using System;
 using System.Collections.Generic;

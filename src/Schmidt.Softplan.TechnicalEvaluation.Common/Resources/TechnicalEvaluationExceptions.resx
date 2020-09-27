@@ -126,6 +126,9 @@
   <data name="EmailInvalidException" xml:space="preserve">
     <value>E-mail não é válido.</value>
   </data>
+  <data name="ProcessoDateDistribuicaoException" xml:space="preserve">
+    <value>A data de distribuição não pode ser posterior a data atual.</value>
+  </data>
   <data name="ProcessoIsFinalizedSituacaoException" xml:space="preserve">
     <value>Processo está com a situação finalizada.</value>
   </data>

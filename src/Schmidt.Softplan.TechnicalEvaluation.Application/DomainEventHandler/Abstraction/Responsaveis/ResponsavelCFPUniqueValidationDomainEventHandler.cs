@@ -2,11 +2,10 @@
 using Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction;
 using Schmidt.Softplan.TechnicalEvaluation.Domain.Abstraction;
 using Schmidt.Softplan.TechnicalEvaluation.Mediator.Abstraction;
-using System.Threading.Tasks;
 
-namespace Schmidt.Softplan.TechnicalEvaluation.Application.DomainEventHandler.Abstraction.Responsavel
+namespace Schmidt.Softplan.TechnicalEvaluation.Application.DomainEventHandler.Abstraction.Responsaveis
 {
-    public abstract class ResponsavelCFPUniqueValidationDomainEventHandler<TResponsavelDomainEvent> : DomainEventHandlerAsync<TResponsavelDomainEvent>
+    public abstract class ResponsavelCFPUniqueValidationDomainEventHandler<TResponsavelDomainEvent> : DomainEventHandler<TResponsavelDomainEvent>
         where TResponsavelDomainEvent : IResponsavelDomainEvent
     {
         private readonly IResponsavelRepository _repository;
@@ -14,7 +13,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Application.DomainEventHandler.Ab
         {
             _repository = repository;
         }
-        public async override Task HandleAsync(TResponsavelDomainEvent request)
+        public override void Handle(TResponsavelDomainEvent request)
         {
             if (_repository.ExistsCPF(request.Responsavel.ID, request.Responsavel.CPF))
                 throw new ResponsavelCPFAlreadyExistsException();

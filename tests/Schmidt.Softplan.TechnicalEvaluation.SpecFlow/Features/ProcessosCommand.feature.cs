@@ -123,12 +123,12 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Features
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar uma processo correto", SourceLine=20)]
-        public virtual void CadastrarUmaProcessoCorreto()
+        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar um processo correto", SourceLine=20)]
+        public virtual void CadastrarUmProcessoCorreto()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar uma processo correto", null, tagsOfScenario, argumentsOfScenario);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar um processo correto", null, tagsOfScenario, argumentsOfScenario);
 #line 21
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -154,8 +154,8 @@ this.FeatureBackground();
 #line hidden
 #line 22
  testRunner.Given("a processo número \'3513042-04.2016.8.19.0423\', descrição \'Primeiro processo\', Sit" +
-                        "uacao \'Em andamento\', Responsáveis \'Carolina Clarice Moreira\' e Segredo de justi" +
-                        "ça \'Não\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+                        "uacao \'Em andamento\', Responsáveis \'Carolina Clarice Moreira\', Pasta do cliente " +
+                        "\'CaminhoPasta\', data de distribuição \'27/09/2020\' e Segredo de justiça \'Não\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 23
  testRunner.Then("possuo um processo", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -164,12 +164,12 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar uma processo sem responsável", SourceLine=24)]
-        public virtual void CadastrarUmaProcessoSemResponsavel()
+        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar um processo correto sem pasta", SourceLine=24)]
+        public virtual void CadastrarUmProcessoCorretoSemPasta()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar uma processo sem responsável", null, tagsOfScenario, argumentsOfScenario);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar um processo correto sem pasta", null, tagsOfScenario, argumentsOfScenario);
 #line 25
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -194,22 +194,23 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 26
- testRunner.Given("a processo número \'3513042-04.2016.8.19.0424\', descrição \'Segundo processo\', Situ" +
-                        "acao \'Desmenbrado\', Responsáveis \'\' e Segredo de justiça \'Não\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("a processo número \'3513042-04.2016.8.19.0423\', descrição \'Primeiro processo\', Sit" +
+                        "uacao \'Em andamento\', Responsáveis \'Carolina Clarice Moreira\', Pasta do cliente " +
+                        "\'\', data de distribuição \'\' e Segredo de justiça \'Não\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 27
- testRunner.Then("I have a exception \'É obrigatório informar um responsável.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("possuo um processo", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar uma processo com três responsaveis", SourceLine=28)]
-        public virtual void CadastrarUmaProcessoComTresResponsaveis()
+        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar duas vezes o mesmo processo", SourceLine=28)]
+        public virtual void CadastrarDuasVezesOMesmoProcesso()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar uma processo com três responsaveis", null, tagsOfScenario, argumentsOfScenario);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar duas vezes o mesmo processo", null, tagsOfScenario, argumentsOfScenario);
 #line 29
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -234,24 +235,29 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 30
- testRunner.Given("a processo número \'3513042-04.2016.8.19.0421\', descrição \'Segundo processo\', Situ" +
-                        "acao \'Desmenbrado\', Responsáveis \'Carolina Clarice Moreira, Benício Heitor Galvã" +
-                        "o, Elisa Nina Marlene Castro, Raimunda Laura Farias\' e Segredo de justiça \'Não\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("a processo número \'3513042-04.2016.8.19.0500\', descrição \'Primeiro processo\', Sit" +
+                        "uacao \'Em andamento\', Responsáveis \'Carolina Clarice Moreira\', Pasta do cliente " +
+                        "\'CaminhoPasta\', data de distribuição \'27/09/2020\' e Segredo de justiça \'Não\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 31
- testRunner.Then("I have a exception \'Não pode informar mais de 3 responsáveis.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("a processo número \'3513042-04.2016.8.19.0500\', descrição \'Primeiro processo\', Sit" +
+                        "uacao \'Em recurso\', Responsáveis \'Benício Heitor Galvão\', Pasta do cliente \'Cami" +
+                        "nhoPasta\', data de distribuição \'27/09/2020\' e Segredo de justiça \'Não\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 32
+ testRunner.Then("I have a exception \'Já existe um processo com este número.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar uma processo com responsaveis duplicados", SourceLine=32)]
-        public virtual void CadastrarUmaProcessoComResponsaveisDuplicados()
+        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar um processo sem número do processo", SourceLine=33)]
+        public virtual void CadastrarUmProcessoSemNumeroDoProcesso()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar uma processo com responsaveis duplicados", null, tagsOfScenario, argumentsOfScenario);
-#line 33
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar um processo sem número do processo", null, tagsOfScenario, argumentsOfScenario);
+#line 34
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -274,12 +280,172 @@ this.ScenarioInitialize(scenarioInfo);
 #line 5
 this.FeatureBackground();
 #line hidden
-#line 34
- testRunner.Given("a processo número \'3513042-04.2016.8.19.0421\', descrição \'Segundo processo\', Situ" +
-                        "acao \'Desmenbrado\', Responsáveis \'Carolina Clarice Moreira, Benício Heitor Galvã" +
-                        "o, Benício Heitor Galvão\' e Segredo de justiça \'Não\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
 #line 35
+ testRunner.Given("a processo número \'\', descrição \'Primeiro processo\', Situacao \'Em andamento\', Res" +
+                        "ponsáveis \'Carolina Clarice Moreira\', Pasta do cliente \'CaminhoPasta\', data de d" +
+                        "istribuição \'\' e Segredo de justiça \'Não\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 36
+ testRunner.Then("I have a exception \'Número de processo unificado é obrigatório.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar um processo com número do processo inválido", SourceLine=37)]
+        public virtual void CadastrarUmProcessoComNumeroDoProcessoInvalido()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar um processo com número do processo inválido", null, tagsOfScenario, argumentsOfScenario);
+#line 38
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 39
+ testRunner.Given("a processo número \'123123123\', descrição \'Primeiro processo\', Situacao \'Em andame" +
+                        "nto\', Responsáveis \'Carolina Clarice Moreira\', Pasta do cliente \'CaminhoPasta\', " +
+                        "data de distribuição \'\' e Segredo de justiça \'Não\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 40
+ testRunner.Then("I have a exception \'Número de processo unificado precisa 20 catacteres.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar um processo sem responsável", SourceLine=41)]
+        public virtual void CadastrarUmProcessoSemResponsavel()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar um processo sem responsável", null, tagsOfScenario, argumentsOfScenario);
+#line 42
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 43
+ testRunner.Given("a processo número \'3513042-04.2016.8.19.0424\', descrição \'Segundo processo\', Situ" +
+                        "acao \'Desmenbrado\', Responsáveis \'\', Pasta do cliente \'CaminhoPasta\', data de di" +
+                        "stribuição \'\' e Segredo de justiça \'Não\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 44
+ testRunner.Then("I have a exception \'É obrigatório informar um responsável.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar um processo com três responsaveis", SourceLine=45)]
+        public virtual void CadastrarUmProcessoComTresResponsaveis()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar um processo com três responsaveis", null, tagsOfScenario, argumentsOfScenario);
+#line 46
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 47
+ testRunner.Given(@"a processo número '3513042-04.2016.8.19.0421', descrição 'Segundo processo', Situacao 'Desmenbrado', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão, Elisa Nina Marlene Castro, Raimunda Laura Farias', Pasta do cliente 'CaminhoPasta', data de distribuição '' e Segredo de justiça 'Não'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 48
+ testRunner.Then("I have a exception \'Não pode informar mais de 3 responsáveis.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar um processo com responsaveis duplicados", SourceLine=49)]
+        public virtual void CadastrarUmProcessoComResponsaveisDuplicados()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar um processo com responsaveis duplicados", null, tagsOfScenario, argumentsOfScenario);
+#line 50
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 51
+ testRunner.Given(@"a processo número '3513042-04.2016.8.19.0421', descrição 'Segundo processo', Situacao 'Desmenbrado', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '' e Segredo de justiça 'Não'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 52
  testRunner.Then("I have a exception \'Não pode informar mais de uma vez um responsável.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

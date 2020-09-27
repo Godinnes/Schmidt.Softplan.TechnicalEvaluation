@@ -97,8 +97,8 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
             }
             context.SaveChanges();
         }
-        [Given(@"a processo número '(.*)', descrição '(.*)', Situacao '(.*)', Responsáveis '(.*)' e Segredo de justiça '(.*)'")]
-        public async Task GivenProcessoAsync(string numeroProcessoUnificado, string descricao, string situacao, string responsaveis, string segredo)
+        [Given(@"a processo número '(.*)', descrição '(.*)', Situacao '(.*)', Responsáveis '(.*)', Pasta do cliente '(.*)', data de distribuição '(.*)' e Segredo de justiça '(.*)'")]
+        public async Task GivenProcessoCompleteAsync(string numeroProcessoUnificado, string descricao, string situacao, string responsaveis, string pastaCliente, string distribuicao, string segredo)
         {
             var context = ServiceProvider.GetRequiredService<SchmidtContext>();
             var situacaoEntity = context.Set<Situacao>().Where(a => a.Nome == situacao).First();
@@ -118,7 +118,9 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
                 Descricao = descricao,
                 SegredoJustica = ParseSimNao(segredo),
                 SituacaoID = situacaoEntity.ID,
-                Responsaveis = responsaveisEntity.Select(a => a.ID)
+                Responsaveis = responsaveisEntity.Select(a => a.ID),
+                PastaFisicaCliente = pastaCliente,
+                Distribuicao = TryParseDateTime(distribuicao)
             };
             try
             {
@@ -140,7 +142,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
         [Then(@"I have a exception '(.*)'")]
         public void ThenException(string message)
         {
-            Assert.IsTrue(ExpectedExceptions.Where(a => a.Message == message).Any());
+            Assert.AreEqual(message, ExpectedExceptions.First().Message);
         }
     }
 }

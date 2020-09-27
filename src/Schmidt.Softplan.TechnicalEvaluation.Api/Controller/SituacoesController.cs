@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Schmidt.Softplan.TechnicalEvaluation.Mediator.Abstraction;
+using Schmidt.Softplan.TechnicalEvaluation.Mediator.Interfaces;
 using Schmidt.Softplan.TechnicalEvaluation.Query.Application.Query.Situacoes;
 using System.Threading.Tasks;
 

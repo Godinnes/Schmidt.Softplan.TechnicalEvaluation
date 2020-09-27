@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Schmidt.Softplan.TechnicalEvaluation.Mediator.Abstraction;
 using Schmidt.Softplan.TechnicalEvaluation.Mediator.Implementations;
+using Schmidt.Softplan.TechnicalEvaluation.Mediator.Interfaces;
 using System;
 
 namespace Schmidt.Softplan.TechnicalEvaluation.Mediator.Extensions

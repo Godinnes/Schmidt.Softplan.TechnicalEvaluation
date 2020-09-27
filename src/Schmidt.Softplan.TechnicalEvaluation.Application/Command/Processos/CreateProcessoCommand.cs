@@ -1,4 +1,4 @@
-﻿using Schmidt.Softplan.TechnicalEvaluation.Mediator.Abstraction;
+﻿using Schmidt.Softplan.TechnicalEvaluation.Mediator.Interfaces;
 using System;
 using System.Collections.Generic;
 

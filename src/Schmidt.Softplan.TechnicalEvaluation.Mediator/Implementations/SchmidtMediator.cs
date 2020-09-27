@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Schmidt.Softplan.TechnicalEvaluation.Mediator.Abstraction;
+using Schmidt.Softplan.TechnicalEvaluation.Mediator.Interfaces;
 using System.Threading.Tasks;
 
 namespace Schmidt.Softplan.TechnicalEvaluation.Mediator.Implementations
@@ -19,9 +19,10 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Mediator.Implementations
         {
             return _mediator.Send(request);
         }
-        public Task SendAsync(IDomainEvent request)
+        public Task PublishAsync<TDomainEvent>(TDomainEvent notification)
+            where TDomainEvent : IDomainEvent
         {
-            return _mediator.Send(request);
+            return _mediator.Publish(notification, default);
         }
     }
 }

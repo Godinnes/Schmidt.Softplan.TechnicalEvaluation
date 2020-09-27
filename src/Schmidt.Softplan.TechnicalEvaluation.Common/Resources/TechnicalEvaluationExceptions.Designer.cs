@@ -89,6 +89,15 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A data de distribuição não pode ser posterior a data atual..
+        /// </summary>
+        public static string ProcessoDateDistribuicaoException {
+            get {
+                return ResourceManager.GetString("ProcessoDateDistribuicaoException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Processo está com a situação finalizada..
         /// </summary>
         public static string ProcessoIsFinalizedSituacaoException {

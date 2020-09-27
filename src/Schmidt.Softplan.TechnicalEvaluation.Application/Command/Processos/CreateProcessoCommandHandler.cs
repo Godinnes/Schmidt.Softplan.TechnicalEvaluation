@@ -28,6 +28,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Application.Command.Processos
 
             var responsaveis = await _responsavelRepository.GetResponsaveisByIDsAync(request.Responsaveis);
             var situacao = await _situacaoRepository.FindAsync(request.SituacaoID);
+
             var newProcesso = Processo.Create(request.NumeroProcessoUnificado,
                                               request.Distribuicao,
                                               request.PastaFisicaCliente,
@@ -36,6 +37,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Application.Command.Processos
                                               situacao,
                                               responsaveis,
                                               request.ProcessoPaiID);
+
             _processoRepository.Add(newProcesso);
             await _processoRepository.SaveChangesAsync();
             return newProcesso.ID;
