@@ -13,5 +13,6 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Application.Command.Processos
         public Guid SituacaoID { get; set; }
         public IEnumerable<Guid> Responsaveis { get; set; }
         public bool SegredoJustica { get; set; }
+        public Guid? ProcessoPaiID { get; set; }
     }
 }

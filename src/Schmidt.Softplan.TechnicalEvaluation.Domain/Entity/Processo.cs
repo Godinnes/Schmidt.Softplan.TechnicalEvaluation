@@ -16,6 +16,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
         public string PastaFisicaCliente { get; private set; }
         public string Descricao { get; private set; }
         public Guid SituacaoID { get; private set; }
+        public Guid? ProcessoPaiID { get; private set; }
         public Situacao Situacao { get; private set; }
         public IEnumerable<ProcessoResponsavel> ProcessoResponsaveis { get; private set; }
         private Processo() { }
@@ -26,7 +27,8 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
                          string descricao,
                          bool segredoJustica,
                          Situacao situacao,
-                         IEnumerable<Responsavel> responsaveis)
+                         IEnumerable<Responsavel> responsaveis,
+                         Guid? processoPaiID)
         {
             ID = id;
             NumeroProcessoUnificado = ValidateNumeroProcessoUnificado(numeroProcessoUnificado);
@@ -35,6 +37,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
             PastaFisicaCliente = pastaFisicaCliente;
             Descricao = descricao;
             SituacaoID = situacao.ID;
+            ProcessoPaiID = processoPaiID;
             Situacao = situacao;
             ProcessoResponsaveis = ToProcessoResposaveis(ID, responsaveis);
             AddDomainEvent(new CreateProcessoDomainEvent(this));
@@ -45,7 +48,8 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
                                       string descricao,
                                       bool segredoJustica,
                                       Situacao situacao,
-                                      IEnumerable<Responsavel> responsaveis)
+                                      IEnumerable<Responsavel> responsaveis,
+                                      Guid? processoPaiID)
         {
             return new Processo(Guid.NewGuid(),
                                 numeroProcessoUnificado,
@@ -54,7 +58,8 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
                                 descricao,
                                 segredoJustica,
                                 situacao,
-                                responsaveis);
+                                responsaveis,
+                                processoPaiID);
         }
         public void Update(string numeroProcessoUnificado,
                            DateTime? distribuicao,
@@ -62,7 +67,8 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
                            string descricao,
                            bool segredoJustica,
                            Situacao situacao,
-                           IEnumerable<Responsavel> responsaveis)
+                           IEnumerable<Responsavel> responsaveis,
+                           Guid? processoPaiID)
         {
             NumeroProcessoUnificado = ValidateNumeroProcessoUnificado(numeroProcessoUnificado);
             Distribuicao = distribuicao;
@@ -70,6 +76,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
             PastaFisicaCliente = pastaFisicaCliente;
             Descricao = descricao;
             SituacaoID = situacao.ID;
+            ProcessoPaiID = processoPaiID;
             Situacao = situacao;
             ProcessoResponsaveis = ToProcessoResposaveis(ID, responsaveis);
             AddDomainEvent(new ChangeProcessoDomainEvent(this));

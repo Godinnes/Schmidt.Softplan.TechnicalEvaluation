@@ -11,7 +11,8 @@ using TechTalk.SpecFlow;
 namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
 {
     [Binding]
-    public class ResponsaveisCommandStepsFeature : ResponsaveisCommandBase
+    [Scope(Tag = "ResponsaveisCommand")]
+    public class ResponsaveisCommandStepsFeature : CommandBase
     {
         public ResponsaveisCommandStepsFeature(ScenarioContext scenarioContext)
             : base(scenarioContext)

@@ -33,6 +33,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
                 build.HasOne(p => p.Situacao).WithMany().HasForeignKey(p => p.SituacaoID);
                 build.HasMany(p => p.ProcessoResponsaveis).WithOne().HasForeignKey(a => a.ProcessoID);
             });
+
             modelBuilder.Entity<Responsavel>(build =>
             {
                 build.ToTable("Responsaveis");

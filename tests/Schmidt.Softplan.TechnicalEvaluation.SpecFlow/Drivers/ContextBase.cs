@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Schmidt.Softplan.TechnicalEvaluation.Mediator.Abstraction;
+using Schmidt.Softplan.TechnicalEvaluation.Query.Application.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,5 +46,20 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Drivers
             return null;
         }
         public bool ParseSimNao(string value) => value?.ToLower() == "sim";
+        public IEnumerable<ResponsavelQueryViewModel> Responsaveis
+        {
+            get { return ScenarioContext.Get<IEnumerable<ResponsavelQueryViewModel>>(nameof(Responsaveis)); }
+            set { ScenarioContext.Set(value, nameof(Responsaveis)); }
+        }
+        public Guid ResponsavelID
+        {
+            get { return ScenarioContext.Get<Guid>(nameof(ResponsavelID)); }
+            set { ScenarioContext.Set(value, nameof(ResponsavelID)); }
+        }
+        public Guid ProcessoID
+        {
+            get { return ScenarioContext.Get<Guid>(nameof(ProcessoID)); }
+            set { ScenarioContext.Set(value, nameof(ProcessoID)); }
+        }
     }
 }

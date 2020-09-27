@@ -14,7 +14,8 @@ using TechTalk.SpecFlow.Assist;
 namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
 {
     [Binding]
-    public class ResponsaveisQueryStepsFeature : ResponsaveisQueryBase
+    [Scope(Tag = "ResponsaveisQuery")]
+    public class ResponsaveisQueryStepsFeature : QueryBase
     {
         public ResponsaveisQueryStepsFeature(ScenarioContext scenarioContext)
             : base(scenarioContext)

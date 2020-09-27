@@ -12,6 +12,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Model.Model
         public string PastaFisicaCliente { get; set; }
         public string Descricao { get; set; }
         public Guid SituacaoID { get; set; }
+        public Guid? ProcessoPaiID { get; set; }
         public Situacao Situacao { get; set; }
         public IEnumerable<ProcessoResponsavel> ProcessoResponsaveis { get; set; }
     }

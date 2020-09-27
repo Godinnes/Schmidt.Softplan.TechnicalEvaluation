@@ -29,7 +29,8 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Application.Command.Processos
                                               request.Descricao,
                                               request.SegredoJustica,
                                               situacao,
-                                              responsaveis);
+                                              responsaveis,
+                                              request.ProcessoPaiID);
             _processoRepository.Add(newProcesso);
             await _processoRepository.SaveChangesAsync();
             return newProcesso.ID;

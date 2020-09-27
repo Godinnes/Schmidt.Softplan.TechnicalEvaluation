@@ -4,14 +4,13 @@ using Schmidt.Softplan.TechnicalEvaluation.Application.Command.Responsaveis;
 using Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction;
 using Schmidt.Softplan.TechnicalEvaluation.Data.Repository;
 using Schmidt.Softplan.TechnicalEvaluation.Mediator.Extensions;
-using System;
 using TechTalk.SpecFlow;
 
 namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Drivers
 {
-    public class ResponsaveisCommandBase : ContextBase
+    public class CommandBase : ContextBase
     {
-        public ResponsaveisCommandBase(ScenarioContext scenarioContext)
+        public CommandBase(ScenarioContext scenarioContext)
             : base(scenarioContext)
         {
             var serviceCollection = new ServiceCollection();
@@ -33,11 +32,6 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Drivers
             });
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
-        }
-        public Guid ResponsavelID
-        {
-            get { return ScenarioContext.Get<Guid>(nameof(ResponsavelID)); }
-            set { ScenarioContext.Set(value, nameof(ResponsavelID)); }
         }
     }
 }

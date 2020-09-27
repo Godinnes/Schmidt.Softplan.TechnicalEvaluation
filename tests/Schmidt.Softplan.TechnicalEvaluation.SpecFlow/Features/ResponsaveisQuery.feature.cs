@@ -77,65 +77,65 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Features
         {
 #line 5
 #line hidden
-            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Nome",
                         "Finalizado"});
-            table1.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "Em andamento",
                         "Não"});
-            table1.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "Desmenbrado",
                         "Não"});
-            table1.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "Em recurso",
                         "Não"});
-            table1.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "Finalizado",
                         "Sim"});
-            table1.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "Arquivado",
                         "Sim"});
 #line 6
- testRunner.Given("The follow situacões", ((string)(null)), table1, "Given ");
+ testRunner.Given("The follow situacões", ((string)(null)), table3, "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Nome",
                         "CPF",
                         "Email"});
-            table2.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "Carolina Clarice Moreira",
                         "187.502.927-30",
                         "ccarolinaclaricemoreira@pontofinalcafe.com.br"});
-            table2.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "Benício Heitor Galvão",
                         "696.365.405-00",
                         "benicioheitorgalvao_@simoesmendonca.adv.br"});
-            table2.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "Elisa Nina Marlene Castro",
                         "159.943.355-92",
                         "elisaninamarlenecastro__elisaninamarlenecastro@doublemoore.com"});
-            table2.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "Raimunda Laura Farias",
                         "080.629.132-01",
                         "raimundalaurafarias_@fepextrusao.com.br"});
 #line 14
- testRunner.Given("The follow responsáveis", ((string)(null)), table2, "Given ");
+ testRunner.Given("The follow responsáveis", ((string)(null)), table4, "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "NumeroProcessoUnificado",
                         "Descricao",
                         "Distribuicao",
                         "SegredoJustica",
                         "Situacao",
                         "Responsaveis"});
-            table3.AddRow(new string[] {
+            table5.AddRow(new string[] {
                         "3513042-04.2016.8.19.0423",
                         "Primeiro Processo",
                         "",
                         "Não",
                         "Em andamento",
                         "Benício Heitor Galvão, Elisa Nina Marlene Castro"});
-            table3.AddRow(new string[] {
+            table5.AddRow(new string[] {
                         "3513040-04.2016.8.19.0423",
                         "Segundo Processo",
                         "",
@@ -143,7 +143,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Features
                         "Desmenbrado",
                         "Raimunda Laura Farias, Carolina Clarice Moreira"});
 #line 21
- testRunner.Given("The follow processos", ((string)(null)), table3, "Given ");
+ testRunner.Given("The follow processos", ((string)(null)), table5, "Given ");
 #line hidden
         }
         
