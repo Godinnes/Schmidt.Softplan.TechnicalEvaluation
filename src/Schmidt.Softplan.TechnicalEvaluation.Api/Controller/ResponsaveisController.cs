@@ -21,6 +21,12 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Api.Controller
             var responsaveis = await _mediator.SendAsync(request);
             return Ok(responsaveis);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetResponsavelAsync([FromQuery]GetResponsavelQuery request)
+        {
+            var responsaveis = await _mediator.SendAsync(request);
+            return Ok(responsaveis);
+        }
         [HttpPost]
         public async Task<IActionResult> CreateNewAsync([FromBody]CreateResponsavelCommand request)
         {
@@ -33,8 +39,8 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Api.Controller
             await _mediator.SendAsync(request);
             return Ok();
         }
-        [HttpDelete("{ID}")]
-        public async Task<IActionResult> RemoveAsync([FromRoute]RemoveResponsavelCommand request)
+        [HttpDelete]
+        public async Task<IActionResult> RemoveAsync([FromQuery]RemoveResponsavelCommand request)
         {
             await _mediator.SendAsync(request);
             return Ok();

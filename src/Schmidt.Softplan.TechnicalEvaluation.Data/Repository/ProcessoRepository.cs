@@ -1,9 +1,11 @@
-﻿using Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction;
+﻿using Microsoft.EntityFrameworkCore;
+using Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction;
 using Schmidt.Softplan.TechnicalEvaluation.Data.Context;
 using Schmidt.Softplan.TechnicalEvaluation.Domain.DomainEvents.Processos;
 using Schmidt.Softplan.TechnicalEvaluation.Domain.Entity;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Schmidt.Softplan.TechnicalEvaluation.Data.Repository
 {
@@ -24,6 +26,14 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Repository
         {
             var exists = Entity.Any(p => p.ID != id && p.NumeroProcessoUnificado == numeroProcessoUnificado);
             return exists;
+        }
+        public async Task<Processo> FindChildAsync(Guid id)
+        {
+            return await Entity.FirstOrDefaultAsync(a => a.ProcessoPaiID == id);
+        }
+        public async Task<bool> HasChildAsync(Guid id)
+        {
+            return await Entity.AnyAsync(a => a.ProcessoPaiID == id);
         }
     }
 }

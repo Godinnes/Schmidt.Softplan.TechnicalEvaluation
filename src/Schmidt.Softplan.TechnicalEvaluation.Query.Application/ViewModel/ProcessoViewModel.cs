@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.ViewModel
 {
-    public class ProcessoQueryViewModel
+    public class ProcessoViewModel
     {
         public Guid ID { get; set; }
         public string NumeroProcessoUnificado { get; set; }
@@ -15,10 +15,13 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.ViewModel
         public string PastaFisicaCliente { get; set; }
         public string Descricao { get; set; }
         public SituacaoQueryViewModel Situacao { get; set; }
+        public ProcessoViewModel ProcessoVinculado { get; set; }
         public IEnumerable<ResponsavelQueryViewModel> Responsaveis { get; set; }
-        public static implicit operator ProcessoQueryViewModel(Processo processo)
+        public static implicit operator ProcessoViewModel(Processo processo)
         {
-            return new ProcessoQueryViewModel()
+            if (processo == null)
+                return null;
+            return new ProcessoViewModel()
             {
                 ID = processo.ID,
                 NumeroProcessoUnificado = processo.NumeroProcessoUnificado,
@@ -27,6 +30,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.ViewModel
                 PastaFisicaCliente = processo.PastaFisicaCliente,
                 Descricao = processo.Descricao,
                 Situacao = processo.Situacao,
+                ProcessoVinculado = processo.ProcessoVinculado.ToViewModel(),
                 Responsaveis = processo.ProcessoResponsaveis.Select(a => a.Responsavel.ToQueryViewModel())
             };
         }

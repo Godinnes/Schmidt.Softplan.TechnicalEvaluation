@@ -11,5 +11,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
         void Remove(Processo processo);
         Task SaveChangesAsync();
         bool HasNumeroProcessoUnificado(Guid id, string numeroProcessoUnificado);
+        Task<Processo> FindChildAsync(Guid id);
+        Task<bool> HasChildAsync(Guid id);
     }
 }

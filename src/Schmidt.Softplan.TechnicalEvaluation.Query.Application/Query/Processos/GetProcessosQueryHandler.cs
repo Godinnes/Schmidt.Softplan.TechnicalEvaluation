@@ -34,7 +34,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.Query.Processos
                 .Where(ProcessoSpecification.ProcessoSegredoJustica(request.SegredoJustica))
                 .Skip(skip)
                 .Take(take)
-                .Select(a => a.ToViewModel())
+                .Select(a => a.ToQueryViewModel())
                 .ToListAsync();
 
             return processos;

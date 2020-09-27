@@ -120,6 +120,9 @@
   <data name="EmailMessage" xml:space="preserve">
     <value>Você foi cadastrado como envolvido no processo de número {0}.</value>
   </data>
+  <data name="EmailRemovedMessage" xml:space="preserve">
+    <value>O processo de número {0} foi removido.</value>
+  </data>
   <data name="EmailTitle" xml:space="preserve">
     <value>Avaliação Técnica Solftplan 2020</value>
   </data>

@@ -30,7 +30,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.Query.Responsav
                 .Where(ResponsavelSpecification.ResponsavelNumeroProcessoUnificado(request.NumeroProcessoUnificado))
                 .Skip(skip)
                 .Take(take)
-                .Select(p => p.ToViewModel())
+                .Select(p => p.ToQueryViewModel())
                 .ToListAsync();
 
             return processos;

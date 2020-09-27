@@ -161,6 +161,15 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Não é possível remover processo que seja pai de outro..
+        /// </summary>
+        public static string ProcessoRemoveVinculedException {
+            get {
+                return ResourceManager.GetString("ProcessoRemoveVinculedException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Não pode informar mais de uma vez um responsável..
         /// </summary>
         public static string ProcessoResponsavelDuplicatedException {
@@ -247,6 +256,15 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Common.Resources {
         public static string ResponsavelNotFoundException {
             get {
                 return ResourceManager.GetString("ResponsavelNotFoundException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Não é possível remover um responsável que esteja vinculado a um processo..
+        /// </summary>
+        public static string ResponsavelRemoveProcessoVinculedException {
+            get {
+                return ResourceManager.GetString("ResponsavelRemoveProcessoVinculedException", resourceCulture);
             }
         }
         

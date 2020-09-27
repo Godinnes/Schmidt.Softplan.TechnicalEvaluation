@@ -150,6 +150,9 @@
   <data name="ProcessoPastaFisicaClienteMaxLengthException" xml:space="preserve">
     <value>Pasta física cliente não pode ter mais de {0} caracteres.</value>
   </data>
+  <data name="ProcessoRemoveVinculedException" xml:space="preserve">
+    <value>Não é possível remover processo que seja pai de outro.</value>
+  </data>
   <data name="ProcessoResponsavelDuplicatedException" xml:space="preserve">
     <value>Não pode informar mais de uma vez um responsável.</value>
   </data>
@@ -179,6 +182,9 @@
   </data>
   <data name="ResponsavelNotFoundException" xml:space="preserve">
     <value>Responsável não encontrado.</value>
+  </data>
+  <data name="ResponsavelRemoveProcessoVinculedException" xml:space="preserve">
+    <value>Não é possível remover um responsável que esteja vinculado a um processo.</value>
   </data>
   <data name="SituacaoNotFoundException" xml:space="preserve">
     <value>Situação não encontrada.</value>

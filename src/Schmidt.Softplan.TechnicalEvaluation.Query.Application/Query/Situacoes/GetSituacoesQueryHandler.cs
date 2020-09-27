@@ -21,7 +21,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.Query.Situacoes
         {
             var situacoes = await _repository.Situacoes
                 .Where(SituacaoSpecification.SituacaoNome(request.Nome))
-                .Select(a => a.ToViewModel())
+                .Select(a => a.ToQueryViewModel())
                 .ToListAsync();
 
             return situacoes;

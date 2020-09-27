@@ -14,6 +14,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Model.Model
         public Guid SituacaoID { get; set; }
         public Guid? ProcessoPaiID { get; set; }
         public Situacao Situacao { get; set; }
+        public Processo ProcessoVinculado { get; set; }
         public IEnumerable<ProcessoResponsavel> ProcessoResponsaveis { get; set; }
     }
 }

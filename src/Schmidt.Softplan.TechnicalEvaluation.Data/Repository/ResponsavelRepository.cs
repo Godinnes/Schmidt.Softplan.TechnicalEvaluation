@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction;
 using Schmidt.Softplan.TechnicalEvaluation.Data.Context;
+using Schmidt.Softplan.TechnicalEvaluation.Domain.DomainEvents.Responsaveis;
 using Schmidt.Softplan.TechnicalEvaluation.Domain.Entity;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,11 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Repository
         public bool ExistsCPF(Guid id, string cpf)
         {
             return Entity.Any(r => r.ID != id && r.CPF == cpf);
+        }
+        public override void Remove(Responsavel entity)
+        {
+            entity.AddDomainEvent(new RemoveResponsavelDomainEvent(entity));
+            base.Remove(entity);
         }
     }
 }

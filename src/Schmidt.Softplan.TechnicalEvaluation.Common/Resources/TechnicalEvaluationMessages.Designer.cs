@@ -71,6 +71,15 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O processo de número {0} foi removido..
+        /// </summary>
+        public static string EmailRemovedMessage {
+            get {
+                return ResourceManager.GetString("EmailRemovedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Avaliação Técnica Solftplan 2020.
         /// </summary>
         public static string EmailTitle {

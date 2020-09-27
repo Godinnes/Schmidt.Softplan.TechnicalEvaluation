@@ -21,6 +21,12 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Api.Controller
             var processos = await _mediator.SendAsync(request);
             return Ok(processos);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAsync([FromQuery]GetProcessoQuery request)
+        {
+            var processos = await _mediator.SendAsync(request);
+            return Ok(processos);
+        }
         [HttpPost]
         public async Task<IActionResult> CreateNewAsync([FromBody]CreateProcessoCommand request)
         {
