@@ -98,9 +98,18 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
         }
         private IEnumerable<ProcessoResponsavel> ToProcessoResposaveis(Guid id, IEnumerable<Responsavel> responsaveis)
         {
-            if (!(responsaveis?.Any() == true))
-                return null;
+            ValidResponsaveis(responsaveis);
             return responsaveis.Select(a => ProcessoResponsavel.Create(id, a.ID)).ToList();
+        }
+        private void ValidResponsaveis(IEnumerable<Responsavel> responsaveis)
+        {
+            if (!(responsaveis.Any() == true))
+                throw new ProcessoResponsavelIsRequiredException();
+            var maxResponsaveis = 3;
+            if (responsaveis.Count() > maxResponsaveis)
+                throw new ProcessoResponsavelMaxLengthException(maxResponsaveis);
+            if (responsaveis.Select(a => a.ID).Distinct().Count() != responsaveis.Count())
+                throw new ProcessoResponsavelDuplicatedException();
         }
     }
 }

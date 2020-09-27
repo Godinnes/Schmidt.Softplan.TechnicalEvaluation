@@ -6,6 +6,7 @@ using Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction;
 using Schmidt.Softplan.TechnicalEvaluation.Domain.Entity;
 using Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Drivers;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
@@ -102,7 +103,14 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
             var context = ServiceProvider.GetRequiredService<SchmidtContext>();
             var situacaoEntity = context.Set<Situacao>().Where(a => a.Nome == situacao).First();
             var responsaveisNomes = responsaveis.Split(',').Select(a => a.Trim()).ToList();
-            var responsaveisEntity = context.Set<Responsavel>().Where(a => responsaveisNomes.Contains(a.Nome)).ToList();
+            var responsaveisEntity = new List<Responsavel>();
+            foreach (var responsavelNome in responsaveisNomes)
+            {
+                if (string.IsNullOrWhiteSpace(responsavelNome))
+                    continue;
+                var responsavel = context.Set<Responsavel>().Where(a => a.Nome == responsavelNome).First();
+                responsaveisEntity.Add(responsavel);
+            }
 
             var command = new CreateProcessoCommand()
             {
@@ -112,8 +120,14 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
                 SituacaoID = situacaoEntity.ID,
                 Responsaveis = responsaveisEntity.Select(a => a.ID)
             };
-
-            ProcessoID = await Mediator.SendAsync(command);
+            try
+            {
+                ProcessoID = await Mediator.SendAsync(command);
+            }
+            catch (Exception ex)
+            {
+                AddException(ex);
+            }
         }
 
         [Then(@"possuo um processo")]
@@ -123,6 +137,10 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
             var processo = context.Set<Processo>().Find(ProcessoID);
             Assert.NotNull(processo);
         }
-
+        [Then(@"I have a exception '(.*)'")]
+        public void ThenException(string message)
+        {
+            Assert.IsTrue(ExpectedExceptions.Where(a => a.Message == message).Any());
+        }
     }
 }

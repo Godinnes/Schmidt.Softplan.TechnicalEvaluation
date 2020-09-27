@@ -125,6 +125,33 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Não pode informar mais de uma vez um responsável..
+        /// </summary>
+        public static string ProcessoResponsavelDuplicatedException {
+            get {
+                return ResourceManager.GetString("ProcessoResponsavelDuplicatedException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to É obrigatório informar um responsável..
+        /// </summary>
+        public static string ProcessoResponsavelIsRequiredException {
+            get {
+                return ResourceManager.GetString("ProcessoResponsavelIsRequiredException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Não pode informar mais de {0} responsáveis..
+        /// </summary>
+        public static string ProcessoResponsavelMaxLengthException {
+            get {
+                return ResourceManager.GetString("ProcessoResponsavelMaxLengthException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Já existe um responsável com este CPF..
         /// </summary>
         public static string ResponsavelCPFAlreadyExistsException {

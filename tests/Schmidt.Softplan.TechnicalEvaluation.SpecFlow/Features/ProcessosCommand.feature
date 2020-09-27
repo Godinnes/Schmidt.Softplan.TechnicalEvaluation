@@ -21,3 +21,15 @@ Background:
 Scenario: Cadastrar uma processo correto
 	Given a processo número '3513042-04.2016.8.19.0423', descrição 'Primeiro processo', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira' e Segredo de justiça 'Não'
 	Then possuo um processo
+
+Scenario: Cadastrar uma processo sem responsável
+	Given a processo número '3513042-04.2016.8.19.0424', descrição 'Segundo processo', Situacao 'Desmenbrado', Responsáveis '' e Segredo de justiça 'Não'
+	Then I have a exception 'É obrigatório informar um responsável.'
+
+Scenario: Cadastrar uma processo com três responsaveis
+	Given a processo número '3513042-04.2016.8.19.0421', descrição 'Segundo processo', Situacao 'Desmenbrado', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão, Elisa Nina Marlene Castro, Raimunda Laura Farias' e Segredo de justiça 'Não'
+	Then I have a exception 'Não pode informar mais de 3 responsáveis.'
+
+Scenario: Cadastrar uma processo com responsaveis duplicados
+	Given a processo número '3513042-04.2016.8.19.0421', descrição 'Segundo processo', Situacao 'Desmenbrado', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão, Benício Heitor Galvão' e Segredo de justiça 'Não'
+	Then I have a exception 'Não pode informar mais de uma vez um responsável.'

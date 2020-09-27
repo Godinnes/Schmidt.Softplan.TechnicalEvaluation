@@ -138,6 +138,15 @@
   <data name="ProcessoNumeroProcessoUnificadoNullException" xml:space="preserve">
     <value>Número de processo unificado é obrigatório.</value>
   </data>
+  <data name="ProcessoResponsavelDuplicatedException" xml:space="preserve">
+    <value>Não pode informar mais de uma vez um responsável.</value>
+  </data>
+  <data name="ProcessoResponsavelIsRequiredException" xml:space="preserve">
+    <value>É obrigatório informar um responsável.</value>
+  </data>
+  <data name="ProcessoResponsavelMaxLengthException" xml:space="preserve">
+    <value>Não pode informar mais de {0} responsáveis.</value>
+  </data>
   <data name="ResponsavelCPFAlreadyExistsException" xml:space="preserve">
     <value>Já existe um responsável com este CPF.</value>
   </data>
