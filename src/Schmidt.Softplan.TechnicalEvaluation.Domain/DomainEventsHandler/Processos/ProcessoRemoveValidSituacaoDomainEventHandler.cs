@@ -7,7 +7,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.DomainEventsHandler.Proces
     {
         public override void Handle(RemoveProcessoDomainEvent request)
         {
-            request.Processo.CanRemove();
+            request.Processo.CanModify();
         }
     }
 }

@@ -135,6 +135,9 @@
   <data name="ProcessoIsFinalizedSituacaoException" xml:space="preserve">
     <value>Processo está com a situação finalizada.</value>
   </data>
+  <data name="ProcessoNotFoundException" xml:space="preserve">
+    <value>Processo não encontrado.</value>
+  </data>
   <data name="ProcessoNumeroProcessoUnificadoAlreadyExistisException" xml:space="preserve">
     <value>Já existe um processo com este número.</value>
   </data>
@@ -173,5 +176,11 @@
   </data>
   <data name="ResponsavelNomeMaxLengthException" xml:space="preserve">
     <value>Nome não pode ter mais de {0} caracteres.</value>
+  </data>
+  <data name="ResponsavelNotFoundException" xml:space="preserve">
+    <value>Responsável não encontrado.</value>
+  </data>
+  <data name="SituacaoNotFoundException" xml:space="preserve">
+    <value>Situação não encontrada.</value>
   </data>
 </root>

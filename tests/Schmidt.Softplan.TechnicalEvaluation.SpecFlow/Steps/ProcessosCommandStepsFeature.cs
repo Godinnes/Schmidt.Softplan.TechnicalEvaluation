@@ -98,7 +98,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
             context.SaveChanges();
         }
         [Given(@"a processo número '(.*)', descrição '(.*)', Situacao '(.*)', Responsáveis '(.*)', Pasta do cliente '(.*)', data de distribuição '(.*)' e Segredo de justiça '(.*)'")]
-        public async Task GivenProcessoCompleteAsync(string numeroProcessoUnificado, string descricao, string situacao, string responsaveis, string pastaCliente, string distribuicao, string segredo)
+        public async Task GivenProcessoAsync(string numeroProcessoUnificado, string descricao, string situacao, string responsaveis, string pastaCliente, string distribuicao, string segredo)
         {
             var context = ServiceProvider.GetRequiredService<SchmidtContext>();
             var situacaoEntity = context.Set<Situacao>().Where(a => a.Nome == situacao).FirstOrDefault();
@@ -131,6 +131,41 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
                 AddException(ex);
             }
         }
+        [When(@"atualizo o processo número '(.*)', descrição '(.*)', Situacao '(.*)', Responsáveis '(.*)', Pasta do cliente '(.*)', data de distribuição '(.*)' e Segredo de justiça '(.*)'")]
+        public async Task WhenAtualizoAsync(string numeroProcessoUnificado, string descricao, string situacao, string responsaveis, string pastaCliente, string distribuicao, string segredo)
+        {
+            var context = ServiceProvider.GetRequiredService<SchmidtContext>();
+            var situacaoEntity = context.Set<Situacao>().Where(a => a.Nome == situacao).FirstOrDefault();
+            var responsaveisNomes = responsaveis.Split(',').Select(a => a.Trim()).ToList();
+            var responsaveisEntity = new List<Responsavel>();
+            foreach (var responsavelNome in responsaveisNomes)
+            {
+                if (string.IsNullOrWhiteSpace(responsavelNome))
+                    continue;
+                var responsavel = context.Set<Responsavel>().Where(a => a.Nome == responsavelNome).First();
+                responsaveisEntity.Add(responsavel);
+            }
+
+            var command = new ChangeProcessoCommand()
+            {
+                ID = ProcessoID,
+                NumeroProcessoUnificado = numeroProcessoUnificado,
+                Descricao = descricao,
+                SegredoJustica = ParseSimNao(segredo),
+                SituacaoID = situacaoEntity?.ID ?? Guid.Empty,
+                Responsaveis = responsaveisEntity.Select(a => a.ID),
+                PastaFisicaCliente = pastaCliente,
+                Distribuicao = TryParseDateTime(distribuicao)
+            };
+            try
+            {
+                await Mediator.SendAsync(command);
+            }
+            catch (Exception ex)
+            {
+                AddException(ex);
+            }
+        }
 
         [Then(@"possuo um processo")]
         public void ThenPossuoUmProcesso()
@@ -144,5 +179,11 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
         {
             Assert.AreEqual(message, ExpectedExceptions.First().Message);
         }
+        [Then(@"I sended (.*) e-mails")]
+        public void ThenISendedE_Mails(int quantityEmails)
+        {
+            Assert.AreEqual(quantityEmails, NumberEmailSended);
+        }
+
     }
 }

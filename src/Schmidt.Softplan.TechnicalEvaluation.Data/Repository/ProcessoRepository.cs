@@ -20,9 +20,9 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Repository
             entity.AddDomainEvent(new RemoveProcessoDomainEvent(entity));
             base.Remove(entity);
         }
-        public bool HasNumeroProcessoUnificado(string numeroProcessoUnificado)
+        public bool HasNumeroProcessoUnificado(Guid id, string numeroProcessoUnificado)
         {
-            var exists = Entity.Any(p => p.NumeroProcessoUnificado == numeroProcessoUnificado);
+            var exists = Entity.Any(p => p.ID != id && p.NumeroProcessoUnificado == numeroProcessoUnificado);
             return exists;
         }
     }

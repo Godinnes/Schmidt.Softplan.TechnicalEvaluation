@@ -116,6 +116,15 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Processo não encontrado..
+        /// </summary>
+        public static string ProcessoNotFoundException {
+            get {
+                return ResourceManager.GetString("ProcessoNotFoundException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Já existe um processo com este número..
         /// </summary>
         public static string ProcessoNumeroProcessoUnificadoAlreadyExistisException {
@@ -229,6 +238,24 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Common.Resources {
         public static string ResponsavelNomeMaxLengthException {
             get {
                 return ResourceManager.GetString("ResponsavelNomeMaxLengthException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Responsável não encontrado..
+        /// </summary>
+        public static string ResponsavelNotFoundException {
+            get {
+                return ResourceManager.GetString("ResponsavelNotFoundException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Situação não encontrada..
+        /// </summary>
+        public static string SituacaoNotFoundException {
+            get {
+                return ResourceManager.GetString("SituacaoNotFoundException", resourceCulture);
             }
         }
     }

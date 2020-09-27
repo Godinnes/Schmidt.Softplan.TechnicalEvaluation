@@ -15,7 +15,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Application.DomainEventHandler.Ab
         }
         public override void Handle(TProcessoDomainEvent request)
         {
-            var exists = _repository.HasNumeroProcessoUnificado(request.Processo.NumeroProcessoUnificado);
+            var exists = _repository.HasNumeroProcessoUnificado(request.Processo.ID, request.Processo.NumeroProcessoUnificado);
             if (exists)
                 throw new ProcessoNumeroProcessoUnificadoAlreadyExistisException();
         }

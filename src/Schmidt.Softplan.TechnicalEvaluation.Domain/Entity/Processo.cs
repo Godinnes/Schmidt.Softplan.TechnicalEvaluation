@@ -71,6 +71,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
                            IEnumerable<Responsavel> responsaveis,
                            Guid? processoPaiID)
         {
+            CanModify();
             NumeroProcessoUnificado = ValidateNumeroProcessoUnificado(numeroProcessoUnificado);
             Distribuicao = distribuicao;
             SegredoJustica = segredoJustica;
@@ -83,7 +84,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
             AddDomainEvent(new ChangeProcessoDomainEvent(this));
             AddAfterDomainEvent(new ChangeProcessoSendEmailDomainEvent(this));
         }
-        public void CanRemove()
+        public void CanModify()
         {
             if (Situacao.Finalizado)
                 throw new ProcessoIsFinalizedSituacaoException();
@@ -107,7 +108,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
                 .Where(a => !processosResponsaveis.Any(i => i.ResponsavelID == a.ID))
                 .Select(a => ProcessoResponsavel.Create(id, a.ID))
                 .ToList();
-
+            processosResponsaveis.ForEach(i => i.DontSendEmail());
             processosResponsaveis.AddRange(newResponsaveis);
             return processosResponsaveis;
         }

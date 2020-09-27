@@ -609,6 +609,87 @@ this.FeatureBackground();
             }
             this.ScenarioCleanup();
         }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar um processo onde deve enviar dois e-mails", SourceLine=69)]
+        public virtual void CadastrarUmProcessoOndeDeveEnviarDoisE_Mails()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar um processo onde deve enviar dois e-mails", null, tagsOfScenario, argumentsOfScenario);
+#line 70
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 71
+ testRunner.Given(@"a processo número '3513042-04.2016.8.19.0423', descrição 'Processo e-mail', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 72
+ testRunner.Then("I sended 2 e-mails", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar um processo onde irei atualizá-lo e deve enviar mais um e-mail", SourceLine=73)]
+        public virtual void CadastrarUmProcessoOndeIreiAtualiza_LoEDeveEnviarMaisUmE_Mail()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar um processo onde irei atualizá-lo e deve enviar mais um e-mail", null, tagsOfScenario, argumentsOfScenario);
+#line 74
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 75
+ testRunner.Given(@"a processo número '3513042-04.2016.8.19.0423', descrição 'Processo e-mail', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 76
+ testRunner.When(@"atualizo o processo número '3513042-04.2016.8.19.0423', descrição 'Processo informar e-mail', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão, Elisa Nina Marlene Castro', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 77
+ testRunner.Then("I sended 1 e-mails", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

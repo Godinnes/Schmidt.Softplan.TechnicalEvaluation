@@ -17,5 +17,10 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Abstraction
         }
         public IEnumerable<IDomainEvent> BeforeEvents => _eventsBefore;
         public IEnumerable<IDomainEvent> AfterEvents => _eventsAfter;
+        public void ClearEvents()
+        {
+            _eventsBefore.Clear();
+            _eventsAfter.Clear();
+        }
     }
 }

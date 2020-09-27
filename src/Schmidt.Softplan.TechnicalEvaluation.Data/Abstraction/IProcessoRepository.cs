@@ -10,6 +10,6 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
         void Add(Processo processo);
         void Remove(Processo processo);
         Task SaveChangesAsync();
-        bool HasNumeroProcessoUnificado(string numeroProcessoUnificado);
+        bool HasNumeroProcessoUnificado(Guid id, string numeroProcessoUnificado);
     }
 }

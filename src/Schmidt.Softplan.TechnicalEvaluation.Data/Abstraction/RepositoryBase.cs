@@ -37,18 +37,35 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
         }
         public async virtual Task SaveChangesAsync()
         {
+            await PublishBeforeAsync();
+
+            await Context.SaveChangesAsync();
+
+            await PublishAfterAsync();
+
+            ClearEvents();
+        }
+        private async Task PublishBeforeAsync()
+        {
             var validationEvents = Context.ChangeTracker.Entries().Select(a => a.Entity as TEntity).Where(e => e?.BeforeEvents?.Any() == true).SelectMany(a => a.BeforeEvents);
             foreach (var domainEvent in validationEvents)
             {
                 await _mediator.PublishAsync(domainEvent);
             }
-
-            await Context.SaveChangesAsync();
-
+        }
+        private async Task PublishAfterAsync()
+        {
             var afterEvents = Context.ChangeTracker.Entries().Select(a => a.Entity as TEntity).Where(e => e?.AfterEvents?.Any() == true).SelectMany(a => a.AfterEvents);
             foreach (var domainEvent in afterEvents)
             {
                 await _mediator.PublishAsync(domainEvent);
+            }
+        }
+        private void ClearEvents()
+        {
+            foreach (var entity in Context.ChangeTracker.Entries().Select(a => a.Entity as TEntity))
+            {
+                entity?.ClearEvents();
             }
         }
     }

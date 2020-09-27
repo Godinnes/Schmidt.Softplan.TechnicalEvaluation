@@ -66,3 +66,12 @@ Scenario: Cadastrar um processo com uma descrição que passa de 1000 caracteres
 Scenario: Cadastrar um processo sem situação
 	Given a processo número '3513042-04.2016.8.19.0423', descrição 'Primeiro processo', Situacao '', Responsáveis 'Carolina Clarice Moreira', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'
 	Then I have a exception 'Situação é obrigatório.'
+
+Scenario: Cadastrar um processo onde deve enviar dois e-mails
+	Given a processo número '3513042-04.2016.8.19.0423', descrição 'Processo e-mail', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'
+	Then I sended 2 e-mails
+
+Scenario: Cadastrar um processo onde irei atualizá-lo e deve enviar mais um e-mail
+	Given a processo número '3513042-04.2016.8.19.0423', descrição 'Processo e-mail', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'
+	When atualizo o processo número '3513042-04.2016.8.19.0423', descrição 'Processo informar e-mail', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão, Elisa Nina Marlene Castro', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'
+	Then I sended 1 e-mails
