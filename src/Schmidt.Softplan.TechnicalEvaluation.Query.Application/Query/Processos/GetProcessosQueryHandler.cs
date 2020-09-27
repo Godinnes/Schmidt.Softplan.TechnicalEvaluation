@@ -32,7 +32,6 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.Query.Processos
                 .Where(ProcessoSpecification.ProcessoSituacao(request.SituacaoID))
                 .Where(ProcessoSpecification.ProcessoPastaFisicaPessoa(request.PastaFisicaCliente))
                 .Where(ProcessoSpecification.ProcessoSegredoJustica(request.SegredoJustica))
-                .Where(ProcessoSpecification.ProcessoDescricao(request.Descricao))
                 .Skip(skip)
                 .Take(take)
                 .Select(a => a.ToViewModel())

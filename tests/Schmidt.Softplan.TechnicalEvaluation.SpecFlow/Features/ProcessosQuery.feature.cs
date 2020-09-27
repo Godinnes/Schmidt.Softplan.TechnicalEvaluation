@@ -19,25 +19,25 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("Responsaveis busca", new string[] {
-            "ResponsaveisQuery"}, Description="\tValidação das buscas", SourceFile="Features\\ResponsaveisQuery.feature", SourceLine=1)]
-    public partial class ResponsaveisBuscaFeature
+    [TechTalk.SpecRun.FeatureAttribute("Processos busca", new string[] {
+            "ProcessosQuery"}, Description="\tValidação das buscas dos processos", SourceFile="Features\\ProcessosQuery.feature", SourceLine=1)]
+    public partial class ProcessosBuscaFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = new string[] {
-                "ResponsaveisQuery"};
+                "ProcessosQuery"};
         
-#line 1 "ResponsaveisQuery.feature"
+#line 1 "ProcessosQuery.feature"
 #line hidden
         
         [TechTalk.SpecRun.FeatureInitialize()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Responsaveis busca", "\tValidação das buscas", ProgrammingLanguage.CSharp, new string[] {
-                        "ResponsaveisQuery"});
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Processos busca", "\tValidação das buscas dos processos", ProgrammingLanguage.CSharp, new string[] {
+                        "ProcessosQuery"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -77,82 +77,101 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Features
         {
 #line 5
 #line hidden
-            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Nome",
                         "Finalizado"});
-            table6.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "Em andamento",
                         "Não"});
-            table6.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "Desmenbrado",
                         "Não"});
-            table6.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "Em recurso",
                         "Não"});
-            table6.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "Finalizado",
                         "Sim"});
-            table6.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "Arquivado",
                         "Sim"});
 #line 6
- testRunner.Given("The follow situacões", ((string)(null)), table6, "Given ");
+ testRunner.Given("The follow situacões", ((string)(null)), table3, "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Nome",
                         "CPF",
                         "Email"});
-            table7.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "Carolina Clarice Moreira",
                         "187.502.927-30",
                         "ccarolinaclaricemoreira@pontofinalcafe.com.br"});
-            table7.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "Benício Heitor Galvão",
                         "696.365.405-00",
                         "benicioheitorgalvao_@simoesmendonca.adv.br"});
-            table7.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "Elisa Nina Marlene Castro",
                         "159.943.355-92",
                         "elisaninamarlenecastro__elisaninamarlenecastro@doublemoore.com"});
-            table7.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "Raimunda Laura Farias",
                         "080.629.132-01",
                         "raimundalaurafarias_@fepextrusao.com.br"});
-#line 14
- testRunner.Given("The follow responsáveis", ((string)(null)), table7, "Given ");
+#line 13
+ testRunner.Given("The follow responsáveis", ((string)(null)), table4, "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "NumeroProcessoUnificado",
                         "Descricao",
                         "Distribuicao",
                         "SegredoJustica",
+                        "Pasta",
                         "Situacao",
                         "Responsaveis"});
-            table8.AddRow(new string[] {
+            table5.AddRow(new string[] {
                         "3513042-04.2016.8.19.0423",
                         "Primeiro Processo",
-                        "",
+                        "01/05/2020",
                         "Não",
+                        "caminho de pasta",
                         "Em andamento",
                         "Benício Heitor Galvão, Elisa Nina Marlene Castro"});
-            table8.AddRow(new string[] {
-                        "3513040-04.2016.8.19.0423",
+            table5.AddRow(new string[] {
+                        "3513040-04.2016.8.19.0421",
                         "Segundo Processo",
-                        "",
+                        "02/06/2020",
                         "Não",
+                        "",
                         "Desmenbrado",
                         "Raimunda Laura Farias, Carolina Clarice Moreira"});
-#line 21
- testRunner.Given("The follow processos", ((string)(null)), table8, "Given ");
+            table5.AddRow(new string[] {
+                        "3513040-04.2016.8.19.0422",
+                        "Terceiro Processo",
+                        "01/10/2019",
+                        "Não",
+                        "",
+                        "Desmenbrado",
+                        "Raimunda Laura Farias"});
+            table5.AddRow(new string[] {
+                        "3513040-04.2016.8.19.0425",
+                        "Quarto Processo",
+                        "",
+                        "Não",
+                        "",
+                        "Em recurso",
+                        "Raimunda Laura Farias, Benício Heitor Galvão , Carolina Clarice Moreira"});
+#line 19
+ testRunner.Given("The follow processos", ((string)(null)), table5, "Given ");
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Buscar todos os responsáveis", SourceLine=25)]
-        public virtual void BuscarTodosOsResponsaveis()
+        [TechTalk.SpecRun.ScenarioAttribute("Busco por todos os processos", SourceLine=25)]
+        public virtual void BuscoPorTodosOsProcessos()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Buscar todos os responsáveis", null, tagsOfScenario, argumentsOfScenario);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Busco por todos os processos", null, tagsOfScenario, argumentsOfScenario);
 #line 26
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -177,21 +196,21 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 27
- testRunner.Given("uma busco por todos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("busca por todos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 28
- testRunner.Then("a quantidade de responsáveis encontrados deveria ser 4", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("possuo 4 processos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Buscar por responsáveis de forma paginada", SourceLine=29)]
-        public virtual void BuscarPorResponsaveisDeFormaPaginada()
+        [TechTalk.SpecRun.ScenarioAttribute("Busco por todos de forma paginada", SourceLine=29)]
+        public virtual void BuscoPorTodosDeFormaPaginada()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Buscar por responsáveis de forma paginada", null, tagsOfScenario, argumentsOfScenario);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Busco por todos de forma paginada", null, tagsOfScenario, argumentsOfScenario);
 #line 30
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -222,18 +241,18 @@ this.FeatureBackground();
  testRunner.And("busca de \'2\' a \'4\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 33
- testRunner.Then("a quantidade de responsáveis encontrados deveria ser 4", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("possuo 4 processos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Buscar por nome dos responsáveis", SourceLine=34)]
-        public virtual void BuscarPorNomeDosResponsaveis()
+        [TechTalk.SpecRun.ScenarioAttribute("Busco por processos informando o número do processo unificado formatado", SourceLine=34)]
+        public virtual void BuscoPorProcessosInformandoONumeroDoProcessoUnificadoFormatado()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Buscar por nome dos responsáveis", null, tagsOfScenario, argumentsOfScenario);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Busco por processos informando o número do processo unificado formatado", null, tagsOfScenario, argumentsOfScenario);
 #line 35
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -258,21 +277,21 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 36
- testRunner.Given("uma busca pelo nome \'ra\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("busca pelo número processo unificado \'3513042-04.2016.8.19.0423\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 37
- testRunner.Then("a quantidade de responsáveis encontrados deveria ser 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("possuo 1 processos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Buscar por CPF formatado dos responsáveis", SourceLine=38)]
-        public virtual void BuscarPorCPFFormatadoDosResponsaveis()
+        [TechTalk.SpecRun.ScenarioAttribute("Busco por processos informando o número do processo unificado não formatado", SourceLine=38)]
+        public virtual void BuscoPorProcessosInformandoONumeroDoProcessoUnificadoNaoFormatado()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Buscar por CPF formatado dos responsáveis", null, tagsOfScenario, argumentsOfScenario);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Busco por processos informando o número do processo unificado não formatado", null, tagsOfScenario, argumentsOfScenario);
 #line 39
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -297,21 +316,21 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 40
- testRunner.Given("uma busca pelo CPF \'187.502.927-30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("busca pelo número processo unificado \'35130400420168190425\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 41
- testRunner.Then("a quantidade de responsáveis encontrados deveria ser 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("possuo 1 processos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Buscar por CPF não formatado dos responsáveis", SourceLine=42)]
-        public virtual void BuscarPorCPFNaoFormatadoDosResponsaveis()
+        [TechTalk.SpecRun.ScenarioAttribute("Busco por processos informando o período da distribuição", SourceLine=42)]
+        public virtual void BuscoPorProcessosInformandoOPeriodoDaDistribuicao()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Buscar por CPF não formatado dos responsáveis", null, tagsOfScenario, argumentsOfScenario);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Busco por processos informando o período da distribuição", null, tagsOfScenario, argumentsOfScenario);
 #line 43
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -336,21 +355,21 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 44
- testRunner.Given("uma busca pelo CPF \'15994335592\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("busca pelo período de distribuição \'01/05/2020\' e \'01/07/2020\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 45
- testRunner.Then("a quantidade de responsáveis encontrados deveria ser 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("possuo 2 processos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Buscar pelo número do processo unificado não formatado dos responsáveis", SourceLine=46)]
-        public virtual void BuscarPeloNumeroDoProcessoUnificadoNaoFormatadoDosResponsaveis()
+        [TechTalk.SpecRun.ScenarioAttribute("Busco por processos informando parte da pasta física cliente", SourceLine=46)]
+        public virtual void BuscoPorProcessosInformandoParteDaPastaFisicaCliente()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Buscar pelo número do processo unificado não formatado dos responsáveis", null, tagsOfScenario, argumentsOfScenario);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Busco por processos informando parte da pasta física cliente", null, tagsOfScenario, argumentsOfScenario);
 #line 47
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -375,21 +394,21 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 48
- testRunner.Given("uma busca pelo número do processo unificado \'35130420420168190423\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("busca por parte da pasta física cliente \'de\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 49
- testRunner.Then("a quantidade de responsáveis encontrados deveria ser 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("possuo 1 processos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Buscar pelo número do processo unificado formatado dos responsáveis", SourceLine=50)]
-        public virtual void BuscarPeloNumeroDoProcessoUnificadoFormatadoDosResponsaveis()
+        [TechTalk.SpecRun.ScenarioAttribute("Busco por processos informando uma situação", SourceLine=50)]
+        public virtual void BuscoPorProcessosInformandoUmaSituacao()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Buscar pelo número do processo unificado formatado dos responsáveis", null, tagsOfScenario, argumentsOfScenario);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Busco por processos informando uma situação", null, tagsOfScenario, argumentsOfScenario);
 #line 51
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -414,10 +433,49 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 52
- testRunner.Given("uma busca pelo número do processo unificado \'3513040-04.2016.8.19.0423\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("busco pela situação \'Desmenbrado\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 53
- testRunner.Then("a quantidade de responsáveis encontrados deveria ser 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("possuo 2 processos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Busco por processos informando parte do nome do responsável", SourceLine=54)]
+        public virtual void BuscoPorProcessosInformandoParteDoNomeDoResponsavel()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Busco por processos informando parte do nome do responsável", null, tagsOfScenario, argumentsOfScenario);
+#line 55
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 56
+ testRunner.Given("busca pelo responsável \'Farias\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 57
+ testRunner.Then("possuo 3 processos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

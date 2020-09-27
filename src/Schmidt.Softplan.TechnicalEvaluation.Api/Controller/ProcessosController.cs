@@ -27,6 +27,12 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Api.Controller
             var processoID = await _mediator.SendAsync(request);
             return Ok(processoID);
         }
+        [HttpPatch]
+        public async Task<IActionResult> UpdateAsync([FromBody]ChangeProcessoCommand request)
+        {
+            await _mediator.SendAsync(request);
+            return Ok();
+        }
         [HttpDelete]
         public async Task<IActionResult> RemoveAsync([FromQuery]RemoveProcessoCommand request)
         {

@@ -46,19 +46,12 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.Specification
 
             return p => p.ProcessoResponsaveis.Any(r => r.Responsavel.Nome.ToLower().Contains(responsavel.ToLower()));
         }
-        public static Expression<Func<Processo, bool>> ProcessoSegredoJustica(bool segredoJustica)
+        public static Expression<Func<Processo, bool>> ProcessoSegredoJustica(bool? segredoJustica)
         {
-            if (!segredoJustica)
+            if (!segredoJustica.HasValue)
                 return p => true;
 
-            return p => p.SegredoJustica == segredoJustica;
-        }
-        public static Expression<Func<Processo, bool>> ProcessoDescricao(string descricao)
-        {
-            if (string.IsNullOrEmpty(descricao))
-                return p => true;
-
-            return p => p.Descricao.ToLower().Contains(descricao.ToLower());
+            return p => p.SegredoJustica == segredoJustica.Value;
         }
     }
 }

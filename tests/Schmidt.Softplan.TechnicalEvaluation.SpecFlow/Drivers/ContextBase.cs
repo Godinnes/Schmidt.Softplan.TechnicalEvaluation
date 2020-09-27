@@ -46,10 +46,32 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Drivers
             return null;
         }
         public bool ParseSimNao(string value) => value?.ToLower() == "sim";
+        public bool? TryParseSimNao(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                return null;
+            return ParseSimNao(value);
+        }
+
         public IEnumerable<ResponsavelQueryViewModel> Responsaveis
         {
-            get { return ScenarioContext.Get<IEnumerable<ResponsavelQueryViewModel>>(nameof(Responsaveis)); }
+            get
+            {
+                if (ScenarioContext.TryGetValue<IEnumerable<ResponsavelQueryViewModel>>(nameof(Responsaveis), out var responsaveis))
+                    return responsaveis;
+                return new List<ResponsavelQueryViewModel>();
+            }
             set { ScenarioContext.Set(value, nameof(Responsaveis)); }
+        }
+        public IEnumerable<ProcessoQueryViewModel> Processos
+        {
+            get
+            {
+                if (ScenarioContext.TryGetValue<IEnumerable<ProcessoQueryViewModel>>(nameof(Processos), out var processos))
+                    return processos;
+                return new List<ProcessoQueryViewModel>();
+            }
+            set { ScenarioContext.Set(value, nameof(Processos)); }
         }
         public Guid ResponsavelID
         {

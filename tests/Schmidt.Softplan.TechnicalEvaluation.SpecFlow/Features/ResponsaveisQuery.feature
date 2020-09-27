@@ -1,5 +1,5 @@
 ﻿@ResponsaveisQuery
-Feature: Responsaveis Busca
+Feature: Responsaveis busca
 	Validação das buscas
 
 Background:
@@ -25,6 +25,11 @@ Background:
 
 Scenario: Buscar todos os responsáveis
 	Given uma busco por todos
+	Then a quantidade de responsáveis encontrados deveria ser 4
+
+Scenario: Buscar por responsáveis de forma paginada
+	Given busca de '0' a '2'
+	And busca de '2' a '4'
 	Then a quantidade de responsáveis encontrados deveria ser 4
 
 Scenario: Buscar por nome dos responsáveis

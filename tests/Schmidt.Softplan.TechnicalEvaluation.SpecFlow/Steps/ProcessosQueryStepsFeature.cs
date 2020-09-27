@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using Schmidt.Softplan.TechnicalEvaluation.Common.ValueObjects;
-using Schmidt.Softplan.TechnicalEvaluation.Query.Application.Query.Responsaveis;
+using Schmidt.Softplan.TechnicalEvaluation.Query.Application.Query.Processos;
 using Schmidt.Softplan.TechnicalEvaluation.Query.Data.Abstraction;
 using Schmidt.Softplan.TechnicalEvaluation.Query.Model.Model;
 using Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Drivers;
@@ -14,10 +14,10 @@ using TechTalk.SpecFlow.Assist;
 namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
 {
     [Binding]
-    [Scope(Tag = "ResponsaveisQuery")]
-    public class ResponsaveisQueryStepsFeature : QueryBase
+    [Scope(Tag = "ProcessosQuery")]
+    public class ProcessosQueryStepsFeature : QueryBase
     {
-        public ResponsaveisQueryStepsFeature(ScenarioContext scenarioContext)
+        public ProcessosQueryStepsFeature(ScenarioContext scenarioContext)
             : base(scenarioContext)
         {
         }
@@ -75,6 +75,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
                     Distribuicao: TryParseDateTime(p.GetString("Distribuicao")),
                     SegredoJustica: ParseSimNao(p.GetString("SegredoJustica")),
                     Situacao: p.GetString("Situacao"),
+                    Pasta: p.GetString("Pasta"),
                     Responsaveis: p.GetString("Responsaveis").Split(',').Select(a => a.Trim()).ToList())
                 ).ToList();
 
@@ -92,7 +93,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
                 newProcesso.Descricao = processo.Descricao;
                 newProcesso.Distribuicao = processo.Distribuicao;
                 newProcesso.SegredoJustica = processo.SegredoJustica;
-                newProcesso.PastaFisicaCliente = null;
+                newProcesso.PastaFisicaCliente = processo.Pasta;
                 newProcesso.Situacao = situacoes.First(a => a.Nome == processo.Situacao);
                 newProcesso.SituacaoID = newProcesso.Situacao.ID;
                 context.Add(newProcesso);
@@ -108,57 +109,88 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
             }
             context.SaveChanges();
         }
-        [Given(@"uma busco por todos")]
-        public async Task GivenSearch()
+        [Given(@"busca por todos")]
+        public async Task GivenBuscaPorTodosAsync()
         {
-            var query = new GetResponsaveisQuery();
-            Responsaveis = await Mediator.SendAsync(query);
+            var query = new GetProcessosQuery()
+            {
+            };
+            Processos = await Mediator.SendAsync(query);
         }
+
         [Given(@"busca de '(.*)' a '(.*)'")]
         public async Task GivenBuscaPaginadaAsync(int skip, int take)
         {
-            var query = new GetResponsaveisQuery()
+            var query = new GetProcessosQuery()
             {
                 Skip = skip,
                 Take = take
             };
-            var responsaveis = Responsaveis.ToList();
-            responsaveis.AddRange(await Mediator.SendAsync(query));
-            Responsaveis = responsaveis;
+            var processos = Processos.ToList();
+            processos.AddRange(await Mediator.SendAsync(query));
+            Processos = processos;
         }
 
-        [Given(@"uma busca pelo nome '(.*)'")]
-        public async Task GivenBuscaNome(string nome)
+
+        [Given(@"busca pelo número processo unificado '(.*)'")]
+        public async Task GivenBuscaPeloNumeroProcessoUnificadoAsync(string numeroProcessoUnificado)
         {
-            var query = new GetResponsaveisQuery()
+            var query = new GetProcessosQuery()
             {
-                Nome = nome
+                NumeroProcessoUnificado = numeroProcessoUnificado,
             };
-            Responsaveis = await Mediator.SendAsync(query);
-        }
-        [Given(@"uma busca pelo CPF '(.*)'")]
-        public async Task GivenBuscaCPF(string cpf)
-        {
-            var query = new GetResponsaveisQuery()
-            {
-                CPF = cpf
-            };
-            Responsaveis = await Mediator.SendAsync(query);
-        }
-        [Given(@"uma busca pelo número do processo unificado '(.*)'")]
-        public async Task GivenUmaBuscaPeloNumeroDoProcessoUnificado(string numeroProcessoUnificado)
-        {
-            var query = new GetResponsaveisQuery()
-            {
-                NumeroProcessoUnificado = numeroProcessoUnificado
-            };
-            Responsaveis = await Mediator.SendAsync(query);
+            Processos = await Mediator.SendAsync(query);
         }
 
-        [Then(@"a quantidade de responsáveis encontrados deveria ser (.*)")]
-        public void ThenTheResult(int responsaveisQuantity)
+        [Given(@"busca pelo período de distribuição '(.*)' e '(.*)'")]
+        public async Task GivenBuscaPeloPeriodoDeDistribuicaoAsync(string dataInicial, string dataFinal)
         {
-            Assert.AreEqual(responsaveisQuantity, Responsaveis.Count());
+            var query = new GetProcessosQuery()
+            {
+                InicioDistribuicao = TryParseDateTime(dataInicial),
+                FimDistribuicao = TryParseDateTime(dataFinal)
+            };
+            Processos = await Mediator.SendAsync(query);
         }
+
+        [Given(@"busca por parte da pasta física cliente '(.*)'")]
+        public async Task GivenBuscaPorParteDaPastaFisicaClienteAsync(string pastaPessoaFisicaCliente)
+        {
+            var query = new GetProcessosQuery()
+            {
+                PastaFisicaCliente = pastaPessoaFisicaCliente,
+            };
+            Processos = await Mediator.SendAsync(query);
+        }
+
+        [Given(@"busco pela situação '(.*)'")]
+        public async Task GivenBuscoPelaSituacaoAsync(string situacao)
+        {
+            var context = ServiceProvider.GetRequiredService<SchmidtQueryContext>();
+            var situacaoEntity = context.Set<Situacao>().First(a => a.Nome == situacao);
+            var query = new GetProcessosQuery()
+            {
+                SituacaoID = situacaoEntity.ID
+            };
+            Processos = await Mediator.SendAsync(query);
+        }
+
+        [Given(@"busca pelo responsável '(.*)'")]
+        public async Task GivenBuscaPeloResponsavelAsync(string responsavel)
+        {
+            var query = new GetProcessosQuery()
+            {
+                Responsavel = responsavel
+            };
+            Processos = await Mediator.SendAsync(query);
+        }
+
+
+        [Then(@"possuo (.*) processos")]
+        public void ThenProcessos(int quantity)
+        {
+            Assert.AreEqual(quantity, Processos.Count());
+        }
+
     }
 }

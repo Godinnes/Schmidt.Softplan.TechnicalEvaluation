@@ -11,10 +11,9 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.Query.Processos
         public DateTime? InicioDistribuicao { get; set; }
         public DateTime? FimDistribuicao { get; set; }
         public string PastaFisicaCliente { get; set; }
-        public string Descricao { get; set; }
         public Guid? SituacaoID { get; set; }
         public string Responsavel { get; set; }
-        public bool SegredoJustica { get; set; }
+        public bool? SegredoJustica { get; set; }
         public int? Skip { get; set; }
         public int? Take { get; set; }
     }
