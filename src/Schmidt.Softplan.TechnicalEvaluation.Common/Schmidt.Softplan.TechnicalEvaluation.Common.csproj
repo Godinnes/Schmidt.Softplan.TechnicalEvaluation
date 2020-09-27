@@ -14,12 +14,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>TechnicalEvaluationExceptions.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\TechnicalEvaluationMessages.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TechnicalEvaluationMessages.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Resources\TechnicalEvaluationExceptions.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TechnicalEvaluationExceptions.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\TechnicalEvaluationMessages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TechnicalEvaluationMessages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

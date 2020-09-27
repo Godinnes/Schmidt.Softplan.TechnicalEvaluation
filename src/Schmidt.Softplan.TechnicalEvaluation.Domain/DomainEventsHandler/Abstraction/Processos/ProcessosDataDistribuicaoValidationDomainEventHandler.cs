@@ -17,7 +17,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.DomainEventsHandler.Abstra
             if (!request.Processo.Distribuicao.HasValue)
                 return;
 
-            if (_dateTimeService.CurrentDateTime > request.Processo.Distribuicao.Value)
+            if (_dateTimeService.CurrentDateTime.Date < request.Processo.Distribuicao.Value)
                 throw new ProcessoDateDistribuicaoException();
         }
     }

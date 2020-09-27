@@ -8,7 +8,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
     public interface IResponsavelRepository
     {
         Task<Responsavel> FindAsync(Guid id);
-        Task<IEnumerable<Responsavel>> GetResponsaveisByIDsAync(IEnumerable<Guid> ids);
+        Task<IEnumerable<Responsavel>> GetResponsaveisByIDsAsync(IEnumerable<Guid> ids);
         void Add(Responsavel responsavel);
         void Remove(Responsavel responsavel);
         Task SaveChangesAsync();

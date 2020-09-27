@@ -15,6 +15,7 @@
     <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.Api\Schmidt.Softplan.TechnicalEvaluation.Api.csproj" />
     <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.Application\Schmidt.Softplan.TechnicalEvaluation.Application.csproj" />
     <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.Data\Schmidt.Softplan.TechnicalEvaluation.Data.csproj" />
+    <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.EmailSender\Schmidt.Softplan.TechnicalEvaluation.EmailSender.csproj" />
     <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.Mediator\Schmidt.Softplan.TechnicalEvaluation.Mediator.csproj" />
     <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.Query.Application\Schmidt.Softplan.TechnicalEvaluation.Query.Application.csproj" />
   </ItemGroup>

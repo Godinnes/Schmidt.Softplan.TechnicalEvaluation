@@ -4,7 +4,6 @@ using Schmidt.Softplan.TechnicalEvaluation.Domain.DomainEvents.Responsaveis;
 using Schmidt.Softplan.TechnicalEvaluation.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
 {
@@ -54,12 +53,6 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
 
             AddDomainEvent(new ChangeResponsavelDomainEvent(this));
         }
-        public void AddProcesso(Processo processo)
-        {
-            var processosResponsaveis = ProcessoResponsaveis?.ToList() ?? new List<ProcessoResponsavel>();
-            processosResponsaveis.Add(ProcessoResponsavel.Create(processo.ID, ID));
-            ProcessoResponsaveis = processosResponsaveis;
-        }
         private string ValidCPF(string cpf)
         {
             if (string.IsNullOrWhiteSpace(cpf))
@@ -83,7 +76,6 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
             if (email.Length > maxLength)
                 throw new ResponsavelEmailMaxLengthException(maxLength);
             return new EmailValueObject(email).Value;
-
         }
     }
 }

@@ -37,6 +37,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{74628313
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schmidt.Softplan.TechnicalEvaluation.SpecFlow", "tests\Schmidt.Softplan.TechnicalEvaluation.SpecFlow\Schmidt.Softplan.TechnicalEvaluation.SpecFlow.csproj", "{C93FDDC0-05D0-41BD-B0E2-B60860E61E6D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schmidt.Softplan.TechnicalEvaluation.EmailSender", "src\Schmidt.Softplan.TechnicalEvaluation.EmailSender\Schmidt.Softplan.TechnicalEvaluation.EmailSender.csproj", "{3E23F180-6984-4386-B459-18284C0D921F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,10 @@ Global
 		{C93FDDC0-05D0-41BD-B0E2-B60860E61E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C93FDDC0-05D0-41BD-B0E2-B60860E61E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C93FDDC0-05D0-41BD-B0E2-B60860E61E6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E23F180-6984-4386-B459-18284C0D921F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E23F180-6984-4386-B459-18284C0D921F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E23F180-6984-4386-B459-18284C0D921F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E23F180-6984-4386-B459-18284C0D921F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,6 +121,7 @@ Global
 		{8C1E9FF4-2E3F-472B-95DE-737DE177DF0C} = {E6DA2747-EE83-4102-8A5A-AFFBD8498218}
 		{C0854FAF-5627-4FEF-ACC0-94CD3C2C2829} = {E6DA2747-EE83-4102-8A5A-AFFBD8498218}
 		{C93FDDC0-05D0-41BD-B0E2-B60860E61E6D} = {74628313-F605-4563-999D-1E878F4FF0CA}
+		{3E23F180-6984-4386-B459-18284C0D921F} = {E6DA2747-EE83-4102-8A5A-AFFBD8498218}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5D9F603B-2A52-45CD-B3B8-1180B409F29C}

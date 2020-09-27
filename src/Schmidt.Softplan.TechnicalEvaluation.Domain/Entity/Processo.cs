@@ -34,13 +34,14 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
             NumeroProcessoUnificado = ValidateNumeroProcessoUnificado(numeroProcessoUnificado);
             Distribuicao = distribuicao;
             SegredoJustica = segredoJustica;
-            PastaFisicaCliente = pastaFisicaCliente;
-            Descricao = descricao;
-            SituacaoID = situacao.ID;
+            PastaFisicaCliente = ValidPastaFisicaCliente(pastaFisicaCliente);
+            Descricao = ValidDescricao(descricao);
             ProcessoPaiID = processoPaiID;
-            Situacao = situacao;
+            Situacao = ValidSituacao(situacao);
+            SituacaoID = situacao.ID;
             ProcessoResponsaveis = ToProcessoResposaveis(ID, responsaveis);
             AddDomainEvent(new CreateProcessoDomainEvent(this));
+            AddAfterDomainEvent(new CreateProcessoSendEmailDomainEvent(this));
         }
         public static Processo Create(string numeroProcessoUnificado,
                                       DateTime? distribuicao,
@@ -73,13 +74,14 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
             NumeroProcessoUnificado = ValidateNumeroProcessoUnificado(numeroProcessoUnificado);
             Distribuicao = distribuicao;
             SegredoJustica = segredoJustica;
-            PastaFisicaCliente = pastaFisicaCliente;
-            Descricao = descricao;
-            SituacaoID = situacao.ID;
+            PastaFisicaCliente = ValidPastaFisicaCliente(pastaFisicaCliente);
+            Descricao = ValidDescricao(descricao);
             ProcessoPaiID = processoPaiID;
-            Situacao = situacao;
+            Situacao = ValidSituacao(situacao);
+            SituacaoID = situacao.ID;
             ProcessoResponsaveis = ToProcessoResposaveis(ID, responsaveis);
             AddDomainEvent(new ChangeProcessoDomainEvent(this));
+            AddAfterDomainEvent(new ChangeProcessoSendEmailDomainEvent(this));
         }
         public void CanRemove()
         {
@@ -99,7 +101,15 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
         private IEnumerable<ProcessoResponsavel> ToProcessoResposaveis(Guid id, IEnumerable<Responsavel> responsaveis)
         {
             ValidResponsaveis(responsaveis);
-            return responsaveis.Select(a => ProcessoResponsavel.Create(id, a.ID)).ToList();
+
+            var processosResponsaveis = ProcessoResponsaveis?.ToList() ?? new List<ProcessoResponsavel>();
+            var newResponsaveis = responsaveis
+                .Where(a => !processosResponsaveis.Any(i => i.ResponsavelID == a.ID))
+                .Select(a => ProcessoResponsavel.Create(id, a.ID))
+                .ToList();
+
+            processosResponsaveis.AddRange(newResponsaveis);
+            return processosResponsaveis;
         }
         private void ValidResponsaveis(IEnumerable<Responsavel> responsaveis)
         {
@@ -110,6 +120,30 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
                 throw new ProcessoResponsavelMaxLengthException(maxResponsaveis);
             if (responsaveis.Select(a => a.ID).Distinct().Count() != responsaveis.Count())
                 throw new ProcessoResponsavelDuplicatedException();
+        }
+        private string ValidPastaFisicaCliente(string pastaFisicaCliente)
+        {
+            if (string.IsNullOrWhiteSpace(pastaFisicaCliente))
+                return null;
+            var maxLength = 50;
+            if (pastaFisicaCliente.Length > maxLength)
+                throw new ProcessoPastaFisicaClienteMaxLengthException(maxLength);
+            return pastaFisicaCliente;
+        }
+        private string ValidDescricao(string descricao)
+        {
+            if (string.IsNullOrWhiteSpace(descricao))
+                return null;
+            var maxLength = 1000;
+            if (descricao.Length > maxLength)
+                throw new ProcessoDescricaoMaxLengthException(maxLength);
+            return descricao;
+        }
+        private Situacao ValidSituacao(Situacao situacao)
+        {
+            if (situacao == null)
+                throw new ProcessoSituacaoException();
+            return situacao;
         }
     }
 }

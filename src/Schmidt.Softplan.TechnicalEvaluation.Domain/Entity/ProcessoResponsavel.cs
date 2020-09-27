@@ -8,6 +8,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
         public Guid ResponsavelID { get; private set; }
         public Processo Processo { get; private set; }
         public Responsavel Responsavel { get; private set; }
+        internal bool IsNewResponsavel { get; private set; }
         private ProcessoResponsavel()
         {
 
@@ -17,11 +18,13 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
         {
             ProcessoID = processoID;
             ResponsavelID = responsavelID;
+            IsNewResponsavel = true;
         }
         public static ProcessoResponsavel Create(Guid processoID,
                                                  Guid responsavelID)
         {
             return new ProcessoResponsavel(processoID, responsavelID);
         }
+        public bool SendEmail => IsNewResponsavel;
     }
 }

@@ -451,6 +451,164 @@ this.FeatureBackground();
             }
             this.ScenarioCleanup();
         }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar um processo com uma data superior ao do dia", SourceLine=53)]
+        public virtual void CadastrarUmProcessoComUmaDataSuperiorAoDoDia()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar um processo com uma data superior ao do dia", null, tagsOfScenario, argumentsOfScenario);
+#line 54
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 55
+ testRunner.Given(@"a processo número '3513042-04.2016.8.19.0421', descrição 'Segundo processo', Situacao 'Desmenbrado', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '28/09/2020' e Segredo de justiça 'Não'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 56
+ testRunner.Then("I have a exception \'A data de distribuição não pode ser posterior a data atual.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar um processo com uma pasta que passa de 50 caracteres", SourceLine=57)]
+        public virtual void CadastrarUmProcessoComUmaPastaQuePassaDe50Caracteres()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar um processo com uma pasta que passa de 50 caracteres", null, tagsOfScenario, argumentsOfScenario);
+#line 58
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 59
+ testRunner.Given(@"a processo número '3513042-04.2016.8.19.0421', descrição 'Segundo processo', Situacao 'Desmenbrado', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'C:\src\Godinnes\Schmidt.Softplan.TechnicalEvaluation\src\Schmidt.Softplan.TechnicalEvaluation.ExceptionHandler\Implementation', data de distribuição '' e Segredo de justiça 'Não'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 60
+ testRunner.Then("I have a exception \'Pasta física cliente não pode ter mais de 50 caracteres.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar um processo com uma descrição que passa de 1000 caracteres", SourceLine=61)]
+        public virtual void CadastrarUmProcessoComUmaDescricaoQuePassaDe1000Caracteres()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar um processo com uma descrição que passa de 1000 caracteres", null, tagsOfScenario, argumentsOfScenario);
+#line 62
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 63
+ testRunner.Given(@"a processo número '3513042-04.2016.8.19.0421', descrição 'No mundo atual, a necessidade de renovação processual ainda não demonstrou convincentemente que vai participar na mudança dos níveis de motivação departamental. Evidentemente, a complexidade dos estudos efetuados obstaculiza a apreciação da importância dos modos de operação convencionais. Pensando mais a longo prazo, o desenvolvimento contínuo de distintas formas de atuação agrega valor ao estabelecimento do orçamento setorial.Percebemos, cada vez mais, que a contínua expansão de nossa atividade pode nos levar a considerar a reestruturação das formas de ação. Gostaria de enfatizar que a expansão dos mercados mundiais não pode mais se dissociar das posturas dos órgãos dirigentes com relação às suas atribuições. A prática cotidiana prova que o entendimento das metas propostas deve passar por modificações independentemente do retorno esperado a longo prazo.Por conseguinte, o desafiador cenário globalizado possibilita uma melhor visão global das novas proposições. Pensando mais a longo prazo, a crescente influência da mídia estimula a padronização de todos os recursos funcionais envolvidos.', Situacao 'Desmenbrado', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente '', data de distribuição '' e Segredo de justiça 'Não'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 64
+ testRunner.Then("I have a exception \'Descrição não pode teer mais de 1000 caracteres.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar um processo sem situação", SourceLine=65)]
+        public virtual void CadastrarUmProcessoSemSituacao()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar um processo sem situação", null, tagsOfScenario, argumentsOfScenario);
+#line 66
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 67
+ testRunner.Given("a processo número \'3513042-04.2016.8.19.0423\', descrição \'Primeiro processo\', Sit" +
+                        "uacao \'\', Responsáveis \'Carolina Clarice Moreira\', Pasta do cliente \'CaminhoPast" +
+                        "a\', data de distribuição \'27/09/2020\' e Segredo de justiça \'Não\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 68
+ testRunner.Then("I have a exception \'Situação é obrigatório.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

@@ -101,7 +101,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
         public async Task GivenProcessoCompleteAsync(string numeroProcessoUnificado, string descricao, string situacao, string responsaveis, string pastaCliente, string distribuicao, string segredo)
         {
             var context = ServiceProvider.GetRequiredService<SchmidtContext>();
-            var situacaoEntity = context.Set<Situacao>().Where(a => a.Nome == situacao).First();
+            var situacaoEntity = context.Set<Situacao>().Where(a => a.Nome == situacao).FirstOrDefault();
             var responsaveisNomes = responsaveis.Split(',').Select(a => a.Trim()).ToList();
             var responsaveisEntity = new List<Responsavel>();
             foreach (var responsavelNome in responsaveisNomes)
@@ -117,7 +117,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
                 NumeroProcessoUnificado = numeroProcessoUnificado,
                 Descricao = descricao,
                 SegredoJustica = ParseSimNao(segredo),
-                SituacaoID = situacaoEntity.ID,
+                SituacaoID = situacaoEntity?.ID ?? Guid.Empty,
                 Responsaveis = responsaveisEntity.Select(a => a.ID),
                 PastaFisicaCliente = pastaCliente,
                 Distribuicao = TryParseDateTime(distribuicao)

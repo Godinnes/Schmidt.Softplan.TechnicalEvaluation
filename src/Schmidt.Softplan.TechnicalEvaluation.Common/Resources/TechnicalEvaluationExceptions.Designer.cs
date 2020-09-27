@@ -98,6 +98,15 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Descrição não pode teer mais de {0} caracteres..
+        /// </summary>
+        public static string ProcessoDescricaoMaxLengthException {
+            get {
+                return ResourceManager.GetString("ProcessoDescricaoMaxLengthException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Processo está com a situação finalizada..
         /// </summary>
         public static string ProcessoIsFinalizedSituacaoException {
@@ -134,6 +143,15 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pasta física cliente não pode ter mais de {0} caracteres..
+        /// </summary>
+        public static string ProcessoPastaFisicaClienteMaxLengthException {
+            get {
+                return ResourceManager.GetString("ProcessoPastaFisicaClienteMaxLengthException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Não pode informar mais de uma vez um responsável..
         /// </summary>
         public static string ProcessoResponsavelDuplicatedException {
@@ -157,6 +175,15 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Common.Resources {
         public static string ProcessoResponsavelMaxLengthException {
             get {
                 return ResourceManager.GetString("ProcessoResponsavelMaxLengthException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Situação é obrigatório..
+        /// </summary>
+        public static string ProcessoSituacaoException {
+            get {
+                return ResourceManager.GetString("ProcessoSituacaoException", resourceCulture);
             }
         }
         

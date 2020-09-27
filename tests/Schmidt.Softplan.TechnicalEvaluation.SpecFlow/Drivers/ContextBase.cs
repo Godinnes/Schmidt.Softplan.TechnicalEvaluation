@@ -41,7 +41,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Drivers
         public DateTime? TryParseDateTime(string dateString)
         {
             var dateResult = DateTime.Now;
-            if (DateTime.TryParse(dateString, out dateResult))
+            if (DateTime.TryParseExact(dateString, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dateResult))
                 return dateResult;
             return null;
         }
@@ -60,6 +60,11 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Drivers
         {
             get { return ScenarioContext.Get<Guid>(nameof(ProcessoID)); }
             set { ScenarioContext.Set(value, nameof(ProcessoID)); }
+        }
+        public int NumberEmailSended
+        {
+            get { return ScenarioContext.Get<int>(nameof(NumberEmailSended)); }
+            set { ScenarioContext.Set(value, nameof(NumberEmailSended)); }
         }
     }
 }

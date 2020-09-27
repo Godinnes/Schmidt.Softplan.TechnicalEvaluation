@@ -48,7 +48,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
         [Then(@"I have a exception '(.*)'")]
         public void ThenIHaveAException(string message)
         {
-            Assert.IsTrue(ExpectedExceptions.Where(e => e.Message == message).Any());
+            Assert.AreEqual(message, ExpectedExceptions.First().Message);
         }
 
     }

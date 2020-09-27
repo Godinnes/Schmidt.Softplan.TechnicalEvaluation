@@ -16,7 +16,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Repository
             : base(context, serviceProvider)
         {
         }
-        public async Task<IEnumerable<Responsavel>> GetResponsaveisByIDsAync(IEnumerable<Guid> ids)
+        public async Task<IEnumerable<Responsavel>> GetResponsaveisByIDsAsync(IEnumerable<Guid> ids)
         {
             return await Entity
                 .Where(r => ids.Contains(r.ID))

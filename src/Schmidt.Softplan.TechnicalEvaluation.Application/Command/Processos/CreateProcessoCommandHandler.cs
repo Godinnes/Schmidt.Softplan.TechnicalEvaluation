@@ -26,7 +26,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Application.Command.Processos
             if (request.Responsaveis.Count() != request.Responsaveis.Distinct().Count())
                 throw new ProcessoResponsavelDuplicatedException();
 
-            var responsaveis = await _responsavelRepository.GetResponsaveisByIDsAync(request.Responsaveis);
+            var responsaveis = await _responsavelRepository.GetResponsaveisByIDsAsync(request.Responsaveis);
             var situacao = await _situacaoRepository.FindAsync(request.SituacaoID);
 
             var newProcesso = Processo.Create(request.NumeroProcessoUnificado,

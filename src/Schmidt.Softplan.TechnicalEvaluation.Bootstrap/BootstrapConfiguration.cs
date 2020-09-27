@@ -8,6 +8,7 @@ using Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction;
 using Schmidt.Softplan.TechnicalEvaluation.Data.Repository;
 using Schmidt.Softplan.TechnicalEvaluation.Domain.Abstraction;
 using Schmidt.Softplan.TechnicalEvaluation.Domain.Services;
+using Schmidt.Softplan.TechnicalEvaluation.EmailSender.Extension;
 using Schmidt.Softplan.TechnicalEvaluation.ExceptionHandler.Extensions;
 using Schmidt.Softplan.TechnicalEvaluation.Mediator.Extensions;
 using Schmidt.Softplan.TechnicalEvaluation.Query.Application.Query.Processos;
@@ -25,6 +26,8 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Bootstrap
             services.AddSchmidtMediator(typeof(CreateProcessoCommandHandler),
                                         typeof(GetProcessosQueryHandler),
                                         typeof(CreateResponsavelValidateCPFDomainEventHandler));
+
+            services.AddEmailSender();
 
             var serviceColletion = new ServiceCollection()
                 .AddEntityFrameworkSqlite()

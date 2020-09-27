@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.Data\Schmidt.Softplan.TechnicalEvaluation.Data.csproj" />
+    <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.EmailSender\Schmidt.Softplan.TechnicalEvaluation.EmailSender.csproj" />
     <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.Mediator\Schmidt.Softplan.TechnicalEvaluation.Mediator.csproj" />
   </ItemGroup>
 

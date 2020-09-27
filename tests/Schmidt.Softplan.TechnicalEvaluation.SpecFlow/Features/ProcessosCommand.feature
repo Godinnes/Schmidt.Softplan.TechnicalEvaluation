@@ -50,3 +50,19 @@ Scenario: Cadastrar um processo com três responsaveis
 Scenario: Cadastrar um processo com responsaveis duplicados
 	Given a processo número '3513042-04.2016.8.19.0421', descrição 'Segundo processo', Situacao 'Desmenbrado', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '' e Segredo de justiça 'Não'
 	Then I have a exception 'Não pode informar mais de uma vez um responsável.'
+
+Scenario: Cadastrar um processo com uma data superior ao do dia
+	Given a processo número '3513042-04.2016.8.19.0421', descrição 'Segundo processo', Situacao 'Desmenbrado', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '28/09/2020' e Segredo de justiça 'Não'
+	Then I have a exception 'A data de distribuição não pode ser posterior a data atual.'
+
+Scenario: Cadastrar um processo com uma pasta que passa de 50 caracteres
+	Given a processo número '3513042-04.2016.8.19.0421', descrição 'Segundo processo', Situacao 'Desmenbrado', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'C:\src\Godinnes\Schmidt.Softplan.TechnicalEvaluation\src\Schmidt.Softplan.TechnicalEvaluation.ExceptionHandler\Implementation', data de distribuição '' e Segredo de justiça 'Não'
+	Then I have a exception 'Pasta física cliente não pode ter mais de 50 caracteres.'
+
+Scenario: Cadastrar um processo com uma descrição que passa de 1000 caracteres
+	Given a processo número '3513042-04.2016.8.19.0421', descrição 'No mundo atual, a necessidade de renovação processual ainda não demonstrou convincentemente que vai participar na mudança dos níveis de motivação departamental. Evidentemente, a complexidade dos estudos efetuados obstaculiza a apreciação da importância dos modos de operação convencionais. Pensando mais a longo prazo, o desenvolvimento contínuo de distintas formas de atuação agrega valor ao estabelecimento do orçamento setorial.Percebemos, cada vez mais, que a contínua expansão de nossa atividade pode nos levar a considerar a reestruturação das formas de ação. Gostaria de enfatizar que a expansão dos mercados mundiais não pode mais se dissociar das posturas dos órgãos dirigentes com relação às suas atribuições. A prática cotidiana prova que o entendimento das metas propostas deve passar por modificações independentemente do retorno esperado a longo prazo.Por conseguinte, o desafiador cenário globalizado possibilita uma melhor visão global das novas proposições. Pensando mais a longo prazo, a crescente influência da mídia estimula a padronização de todos os recursos funcionais envolvidos.', Situacao 'Desmenbrado', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente '', data de distribuição '' e Segredo de justiça 'Não'
+	Then I have a exception 'Descrição não pode teer mais de 1000 caracteres.'
+
+Scenario: Cadastrar um processo sem situação
+	Given a processo número '3513042-04.2016.8.19.0423', descrição 'Primeiro processo', Situacao '', Responsáveis 'Carolina Clarice Moreira', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'
+	Then I have a exception 'Situação é obrigatório.'

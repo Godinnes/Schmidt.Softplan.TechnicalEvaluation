@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction;
 using Schmidt.Softplan.TechnicalEvaluation.Domain.Entity;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Schmidt.Softplan.TechnicalEvaluation.Data.Seeder
 {
@@ -13,7 +13,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Seeder
         {
             var context = services.CreateScope().ServiceProvider.GetRequiredService<SchmidtContext>();
             context.Database.EnsureCreated();
-            if (context.Set<Situacao>().Any())
+            if (context.Set<Situacao>().Where(a => true).Any())
                 return;
 
             var situacoes = new List<Situacao>();

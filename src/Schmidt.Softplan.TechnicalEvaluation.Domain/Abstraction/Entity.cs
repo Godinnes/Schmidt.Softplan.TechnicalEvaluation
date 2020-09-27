@@ -5,11 +5,17 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Abstraction
 {
     public class Entity
     {
-        private List<IDomainEvent> _events = new List<IDomainEvent>();
+        private List<IDomainEvent> _eventsBefore = new List<IDomainEvent>();
+        private List<IDomainEvent> _eventsAfter = new List<IDomainEvent>();
         public void AddDomainEvent(IDomainEvent domainEvent)
         {
-            _events.Add(domainEvent);
+            _eventsBefore.Add(domainEvent);
         }
-        public IEnumerable<IDomainEvent> Events => _events;
+        public void AddAfterDomainEvent(IDomainEvent domainEvent)
+        {
+            _eventsAfter.Add(domainEvent);
+        }
+        public IEnumerable<IDomainEvent> BeforeEvents => _eventsBefore;
+        public IEnumerable<IDomainEvent> AfterEvents => _eventsAfter;
     }
 }

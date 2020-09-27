@@ -117,61 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CPFInvalidException" xml:space="preserve">
-    <value>CPF não é válido.</value>
+  <data name="EmailMessage" xml:space="preserve">
+    <value>Você foi cadastrado como envolvido no processo de número {0}.</value>
   </data>
-  <data name="CPFIsRequiredException" xml:space="preserve">
-    <value>CPF é obrigatório.</value>
-  </data>
-  <data name="EmailInvalidException" xml:space="preserve">
-    <value>E-mail não é válido.</value>
-  </data>
-  <data name="ProcessoDateDistribuicaoException" xml:space="preserve">
-    <value>A data de distribuição não pode ser posterior a data atual.</value>
-  </data>
-  <data name="ProcessoDescricaoMaxLengthException" xml:space="preserve">
-    <value>Descrição não pode teer mais de {0} caracteres.</value>
-  </data>
-  <data name="ProcessoIsFinalizedSituacaoException" xml:space="preserve">
-    <value>Processo está com a situação finalizada.</value>
-  </data>
-  <data name="ProcessoNumeroProcessoUnificadoAlreadyExistisException" xml:space="preserve">
-    <value>Já existe um processo com este número.</value>
-  </data>
-  <data name="ProcessoNumeroProcessoUnificadoLengthException" xml:space="preserve">
-    <value>Número de processo unificado precisa {0} catacteres.</value>
-  </data>
-  <data name="ProcessoNumeroProcessoUnificadoNullException" xml:space="preserve">
-    <value>Número de processo unificado é obrigatório.</value>
-  </data>
-  <data name="ProcessoPastaFisicaClienteMaxLengthException" xml:space="preserve">
-    <value>Pasta física cliente não pode ter mais de {0} caracteres.</value>
-  </data>
-  <data name="ProcessoResponsavelDuplicatedException" xml:space="preserve">
-    <value>Não pode informar mais de uma vez um responsável.</value>
-  </data>
-  <data name="ProcessoResponsavelIsRequiredException" xml:space="preserve">
-    <value>É obrigatório informar um responsável.</value>
-  </data>
-  <data name="ProcessoResponsavelMaxLengthException" xml:space="preserve">
-    <value>Não pode informar mais de {0} responsáveis.</value>
-  </data>
-  <data name="ProcessoSituacaoException" xml:space="preserve">
-    <value>Situação é obrigatório.</value>
-  </data>
-  <data name="ResponsavelCPFAlreadyExistsException" xml:space="preserve">
-    <value>Já existe um responsável com este CPF.</value>
-  </data>
-  <data name="ResponsavelEmailIsRequiredException" xml:space="preserve">
-    <value>E-mail é obrigatório.</value>
-  </data>
-  <data name="ResponsavelEmailMaxLengthException" xml:space="preserve">
-    <value>E-mail não pode ter mais de {0} caracteres.</value>
-  </data>
-  <data name="ResponsavelNomeIsRequiredException" xml:space="preserve">
-    <value>Nome do responsável é obrigatório.</value>
-  </data>
-  <data name="ResponsavelNomeMaxLengthException" xml:space="preserve">
-    <value>Nome não pode ter mais de {0} caracteres.</value>
+  <data name="EmailTitle" xml:space="preserve">
+    <value>Avaliação Técnica Solftplan 2020</value>
   </data>
 </root>
