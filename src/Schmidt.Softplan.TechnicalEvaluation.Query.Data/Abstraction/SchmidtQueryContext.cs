@@ -15,29 +15,39 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Data.Abstraction
             {
                 build.ToTable("ProcessosResponsaveis");
                 build.HasKey(k => new { k.ProcessoID, k.ResponsavelID });
-                build.HasOne<Processo>().WithMany().HasForeignKey(a => a.ProcessoID);
-                build.HasOne<Responsavel>().WithMany().HasForeignKey(a => a.ResponsavelID);
             });
+
+            modelBuilder.Entity<ProcessoResponsavel>()
+                .HasOne(a => a.Processo)
+                .WithMany().HasForeignKey(a => a.ProcessoID);
+
+            modelBuilder.Entity<ProcessoResponsavel>()
+                .HasOne(a => a.Responsavel)
+                .WithMany().HasForeignKey(a => a.ResponsavelID);
 
             modelBuilder.Entity<Processo>(build =>
             {
                 build.ToTable("Processos");
                 build.HasKey(k => k.ID);
-                build.HasOne(p => p.Situacao).WithMany().HasForeignKey("situacaoID");
-                build.HasMany(p => p.Responsaveis);
+                build.Property(p => p.NumeroProcessoUnificado).IsRequired().HasMaxLength(20);
+                build.HasOne(p => p.Situacao).WithMany().HasForeignKey(p => p.SituacaoID);
+                build.HasMany(p => p.ProcessoResponsaveis).WithOne(p => p.Processo).HasForeignKey(a => a.ProcessoID);
             });
-
             modelBuilder.Entity<Responsavel>(build =>
             {
                 build.ToTable("Responsaveis");
                 build.HasKey(k => k.ID);
-                build.HasMany(p => p.Processos);
+                build.Property(p => p.CPF).IsRequired().HasMaxLength(11);
+                build.Property(p => p.Nome).IsRequired().HasMaxLength(150);
+                build.Property(p => p.Email).IsRequired().HasMaxLength(400);
+                build.HasMany(p => p.ProcessoResponsaveis).WithOne(p => p.Responsavel).HasForeignKey(a => a.ResponsavelID);
             });
-
             modelBuilder.Entity<Situacao>(build =>
             {
                 build.ToTable("Situacoes");
                 build.HasKey(k => k.ID);
+                build.Property(p => p.Nome).IsRequired().HasMaxLength(12);
+                build.HasMany<Processo>().WithOne().HasForeignKey(p => p.SituacaoID);
             });
         }
     }

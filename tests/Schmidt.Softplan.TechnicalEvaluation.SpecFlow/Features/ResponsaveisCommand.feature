@@ -1,7 +1,7 @@
-﻿Feature: Responsaveis
+﻿@ResponsaveisCommand
+Feature: Responsaveis cadastro
 	Validação dos responsáveis
 
-@Responsaveis
 Scenario: Cadastrando um responsável com informações corretas
 	Given a responsavel 'Vitor Carlos da Conceição', CPF '173.234.992-40', Email 'vvitorcarlosdaconceicao@landovale.com.br'
 	Then I have a responsavel

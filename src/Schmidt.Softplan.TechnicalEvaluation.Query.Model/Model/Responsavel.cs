@@ -10,6 +10,6 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Model.Model
         public string CPF { get; set; }
         public string Email { get; set; }
         public string Foto { get; set; }
-        public IEnumerable<Processo> Processos { get; set; }
+        public IEnumerable<ProcessoResponsavel> ProcessoResponsaveis { get; set; }
     }
 }

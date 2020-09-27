@@ -1,6 +1,8 @@
-﻿using Schmidt.Softplan.TechnicalEvaluation.Common.ValueObjects;
+﻿using Microsoft.EntityFrameworkCore.Internal;
+using Schmidt.Softplan.TechnicalEvaluation.Common.ValueObjects;
 using Schmidt.Softplan.TechnicalEvaluation.Query.Model.Model;
 using System;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.Specification
@@ -25,8 +27,9 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.Specification
         {
             if (string.IsNullOrWhiteSpace(numeroProcessoUnificado))
                 return p => true;
+            var numeroWithoutDots = new NumeroProcessoUnificadoValueObject(numeroProcessoUnificado).Value;
 
-            return p => true;
+            return p => p.ProcessoResponsaveis.Where(i => i.Processo.NumeroProcessoUnificado == numeroWithoutDots).Any();
         }
     }
 }

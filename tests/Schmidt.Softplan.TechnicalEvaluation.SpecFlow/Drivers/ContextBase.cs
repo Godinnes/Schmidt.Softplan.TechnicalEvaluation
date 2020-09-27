@@ -1,14 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.Extensions.DependencyInjection;
-using Schmidt.Softplan.TechnicalEvaluation.Application.Command.Responsaveis;
-using Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction;
-using Schmidt.Softplan.TechnicalEvaluation.Data.Repository;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Schmidt.Softplan.TechnicalEvaluation.Mediator.Abstraction;
-using Schmidt.Softplan.TechnicalEvaluation.Mediator.Extensions;
-using Schmidt.Softplan.TechnicalEvaluation.Query.Application.Query.Responsaveis;
-using Schmidt.Softplan.TechnicalEvaluation.Query.Data.Abstraction;
-using Schmidt.Softplan.TechnicalEvaluation.Query.Data.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,33 +13,6 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Drivers
         public ContextBase(ScenarioContext scenarioContext)
         {
             ScenarioContext = scenarioContext;
-
-            var serviceCollection = new ServiceCollection();
-            serviceCollection.AddSchmidtMediator(typeof(CreateResponsavelCommandHandler),
-                                                 typeof(GetResponsaveisQueryHandler));
-
-            serviceCollection.AddScoped<IProcessoRepository, ProcessoRepository>();
-            serviceCollection.AddScoped<IResponsavelRepository, ResponsavelRepository>();
-            serviceCollection.AddScoped<ISituacaoRepository, SituacaoRepository>();
-            serviceCollection.AddScoped<IQueryRepository, QueryRepository>();
-
-            MemoryRoot = new InMemoryDatabaseRoot();
-
-            var serviceProvider = new ServiceCollection()
-                .AddEntityFrameworkInMemoryDatabase()
-                .BuildServiceProvider();
-
-            serviceCollection.AddDbContext<SchmidtContext>(options =>
-            {
-                options.UseInMemoryDatabase("memory", MemoryRoot);
-                options.UseInternalServiceProvider(serviceProvider);
-            });
-            serviceCollection.AddDbContext<SchmidtQueryContext>(options =>
-            {
-                options.UseInMemoryDatabase("memory", MemoryRoot);
-                options.UseInternalServiceProvider(serviceProvider);
-            });
-            ServiceProvider = serviceCollection.BuildServiceProvider();
         }
 
         public ServiceProvider ServiceProvider
@@ -73,10 +37,13 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Drivers
             exceptions.Add(ex);
             ExpectedExceptions = exceptions;
         }
-        public InMemoryDatabaseRoot MemoryRoot
+        public DateTime? TryParseDateTime(string dateString)
         {
-            get { return ScenarioContext.Get<InMemoryDatabaseRoot>(nameof(MemoryRoot)); }
-            set { ScenarioContext.Set(value, nameof(MemoryRoot)); }
+            var dateResult = DateTime.Now;
+            if (DateTime.TryParse(dateString, out dateResult))
+                return dateResult;
+            return null;
         }
+        public bool ParseSimNao(string value) => value?.ToLower() == "sim";
     }
 }

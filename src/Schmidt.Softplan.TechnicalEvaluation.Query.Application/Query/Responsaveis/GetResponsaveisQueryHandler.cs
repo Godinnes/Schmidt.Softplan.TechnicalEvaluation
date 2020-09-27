@@ -23,6 +23,8 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.Query.Responsav
             var take = request.Take ?? 10;
 
             var processos = await _repository.Responsaveis
+                .Include(a => a.ProcessoResponsaveis)
+                    .ThenInclude(a => a.Processo)
                 .Where(ResponsavelSpecification.ResponsavelNome(request.Nome))
                 .Where(ResponsavelSpecification.ResponsavelCPF(request.CPF))
                 .Where(ResponsavelSpecification.ResponsavelNumeroProcessoUnificado(request.NumeroProcessoUnificado))

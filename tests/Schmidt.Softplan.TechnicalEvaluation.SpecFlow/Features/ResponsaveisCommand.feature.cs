@@ -19,22 +19,25 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("Responsaveis", Description="\tValidação dos responsáveis", SourceFile="Features\\Responsaveis.feature", SourceLine=0)]
-    public partial class ResponsaveisFeature
+    [TechTalk.SpecRun.FeatureAttribute("Responsaveis cadastro", new string[] {
+            "ResponsaveisCommand"}, Description="\tValidação dos responsáveis", SourceFile="Features\\ResponsaveisCommand.feature", SourceLine=1)]
+    public partial class ResponsaveisCadastroFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-        private string[] _featureTags = ((string[])(null));
+        private string[] _featureTags = new string[] {
+                "ResponsaveisCommand"};
         
-#line 1 "Responsaveis.feature"
+#line 1 "ResponsaveisCommand.feature"
 #line hidden
         
         [TechTalk.SpecRun.FeatureInitialize()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Responsaveis", "\tValidação dos responsáveis", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Responsaveis cadastro", "\tValidação dos responsáveis", ProgrammingLanguage.CSharp, new string[] {
+                        "ResponsaveisCommand"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -70,12 +73,10 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Cadastrando um responsável com informações corretas", new string[] {
-                "Responsaveis"}, SourceLine=4)]
+        [TechTalk.SpecRun.ScenarioAttribute("Cadastrando um responsável com informações corretas", SourceLine=4)]
         public virtual void CadastrandoUmResponsavelComInformacoesCorretas()
         {
-            string[] tagsOfScenario = new string[] {
-                    "Responsaveis"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrando um responsável com informações corretas", null, tagsOfScenario, argumentsOfScenario);
 #line 5

@@ -15,9 +15,15 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
             {
                 build.ToTable("ProcessosResponsaveis");
                 build.HasKey(k => new { k.ProcessoID, k.ResponsavelID });
-                build.HasOne<Processo>().WithMany().HasForeignKey(a => a.ProcessoID);
-                build.HasOne<Responsavel>().WithMany().HasForeignKey(a => a.ResponsavelID);
             });
+
+            modelBuilder.Entity<ProcessoResponsavel>()
+                .HasOne(a => a.Processo)
+                .WithMany().HasForeignKey(a => a.ProcessoID);
+
+            modelBuilder.Entity<ProcessoResponsavel>()
+                .HasOne(a => a.Responsavel)
+                .WithMany().HasForeignKey(a => a.ResponsavelID);
 
             modelBuilder.Entity<Processo>(build =>
             {
@@ -25,7 +31,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
                 build.HasKey(k => k.ID);
                 build.Property(p => p.NumeroProcessoUnificado).IsRequired().HasMaxLength(20);
                 build.HasOne(p => p.Situacao).WithMany().HasForeignKey(p => p.SituacaoID);
-                build.HasMany(p => p.Responsaveis);
+                build.HasMany(p => p.ProcessoResponsaveis).WithOne().HasForeignKey(a => a.ProcessoID);
             });
             modelBuilder.Entity<Responsavel>(build =>
             {
@@ -34,7 +40,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
                 build.Property(p => p.CPF).IsRequired().HasMaxLength(11);
                 build.Property(p => p.Nome).IsRequired().HasMaxLength(150);
                 build.Property(p => p.Email).IsRequired().HasMaxLength(400);
-                build.HasMany(p => p.Processos);
+                build.HasMany(p => p.ProcessoResponsaveis).WithOne().HasForeignKey(a => a.ResponsavelID);
             });
             modelBuilder.Entity<Situacao>(build =>
             {

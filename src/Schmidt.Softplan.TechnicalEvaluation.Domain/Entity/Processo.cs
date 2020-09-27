@@ -1,7 +1,9 @@
 ﻿using Schmidt.Softplan.TechnicalEvaluation.Common.Exception;
+using Schmidt.Softplan.TechnicalEvaluation.Common.ValueObjects;
 using Schmidt.Softplan.TechnicalEvaluation.Domain.DomainEvents.Processos;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
 {
@@ -15,7 +17,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
         public string Descricao { get; private set; }
         public Guid SituacaoID { get; private set; }
         public Situacao Situacao { get; private set; }
-        public IEnumerable<Responsavel> Responsaveis { get; private set; }
+        public IEnumerable<ProcessoResponsavel> ProcessoResponsaveis { get; private set; }
         private Processo() { }
         private Processo(Guid id,
                          string numeroProcessoUnificado,
@@ -34,7 +36,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
             Descricao = descricao;
             SituacaoID = situacao.ID;
             Situacao = situacao;
-            Responsaveis = responsaveis;
+            ProcessoResponsaveis = ToProcessoResposaveis(ID, responsaveis);
             AddDomainEvent(new CreateProcessoDomainEvent(this));
         }
         public static Processo Create(string numeroProcessoUnificado,
@@ -69,7 +71,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
             Descricao = descricao;
             SituacaoID = situacao.ID;
             Situacao = situacao;
-            Responsaveis = responsaveis;
+            ProcessoResponsaveis = ToProcessoResposaveis(ID, responsaveis);
             AddDomainEvent(new ChangeProcessoDomainEvent(this));
         }
         public void CanRemove()
@@ -82,9 +84,16 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
             var lengthRequired = 20;
             if (string.IsNullOrWhiteSpace(numeroProcessoUnificado))
                 throw new ProcessoNumeroProcessoUnificadoNullException();
-            if (numeroProcessoUnificado.Length != lengthRequired)
+            var numberWithoutDots = new NumeroProcessoUnificadoValueObject(numeroProcessoUnificado).Value;
+            if (numberWithoutDots.Length != lengthRequired)
                 throw new ProcessoNumeroProcessoUnificadoLengthException(lengthRequired);
-            return numeroProcessoUnificado;
+            return numberWithoutDots;
+        }
+        private IEnumerable<ProcessoResponsavel> ToProcessoResposaveis(Guid id, IEnumerable<Responsavel> responsaveis)
+        {
+            if (!(responsaveis?.Any() == true))
+                return null;
+            return responsaveis.Select(a => ProcessoResponsavel.Create(id, a.ID)).ToList();
         }
     }
 }

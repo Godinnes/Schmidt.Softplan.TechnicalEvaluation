@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using Schmidt.Softplan.TechnicalEvaluation.Application.Command.Responsaveis;
 using Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction;
-using Schmidt.Softplan.TechnicalEvaluation.Query.Application.Query.Responsaveis;
 using Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Drivers;
 using System;
 using System.Linq;
@@ -12,9 +11,9 @@ using TechTalk.SpecFlow;
 namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
 {
     [Binding]
-    public sealed class ResponsaveisStepsFeature : ResponsaveisBase
+    public class ResponsaveisCommandStepsFeature : ResponsaveisCommandBase
     {
-        public ResponsaveisStepsFeature(ScenarioContext scenarioContext)
+        public ResponsaveisCommandStepsFeature(ScenarioContext scenarioContext)
             : base(scenarioContext)
         {
         }
@@ -38,17 +37,6 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
                 AddException(ex);
             }
         }
-        [Then(@"I search by CPF '(.*)'")]
-        public async Task ThenISearchByCPF(string cpf)
-        {
-            var query = new GetResponsaveisQuery()
-            {
-                CPF = cpf
-            };
-            var responsaveis = await Mediator.SendAsync(query);
-            Assert.AreEqual(1, responsaveis.Count());
-        }
-
         [Then(@"I have a responsavel")]
         public async Task ThenIHaveAResponsavel()
         {

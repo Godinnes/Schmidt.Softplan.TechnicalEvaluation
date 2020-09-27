@@ -35,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schmidt.Softplan.TechnicalE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{74628313-F605-4563-999D-1E878F4FF0CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schmidt.Softplan.TechnicalEvaluation.SpecFlow", "tests\Schmidt.Softplan.TechnicalEvaluation.SpecFlow\Schmidt.Softplan.TechnicalEvaluation.SpecFlow.csproj", "{C93FDDC0-05D0-41BD-B0E2-B60860E61E6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schmidt.Softplan.TechnicalEvaluation.SpecFlow", "tests\Schmidt.Softplan.TechnicalEvaluation.SpecFlow\Schmidt.Softplan.TechnicalEvaluation.SpecFlow.csproj", "{C93FDDC0-05D0-41BD-B0E2-B60860E61E6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

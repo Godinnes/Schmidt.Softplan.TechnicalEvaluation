@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Internal;
+using Schmidt.Softplan.TechnicalEvaluation.Common.ValueObjects;
 using Schmidt.Softplan.TechnicalEvaluation.Query.Model.Model;
 using System;
 using System.Linq;
@@ -20,8 +21,9 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.Specification
         {
             if (string.IsNullOrEmpty(numeroProcessoUnificado))
                 return p => true;
+            var numberWithoutDots = new NumeroProcessoUnificadoValueObject(numeroProcessoUnificado).Value;
 
-            return p => numeroProcessoUnificado == p.NumeroProcessoUnificado;
+            return p => numberWithoutDots == p.NumeroProcessoUnificado;
         }
         public static Expression<Func<Processo, bool>> ProcessoPastaFisicaPessoa(string pastaFisicaPessoa)
         {
@@ -42,7 +44,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.Specification
             if (string.IsNullOrEmpty(responsavel))
                 return p => true;
 
-            return p => p.Responsaveis.Any(r => r.Nome.Contains(responsavel));
+            return p => p.ProcessoResponsaveis.Any(r => r.Responsavel.Nome.ToLower().Contains(responsavel.ToLower()));
         }
         public static Expression<Func<Processo, bool>> ProcessoSegredoJustica(bool segredoJustica)
         {
@@ -56,7 +58,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.Specification
             if (string.IsNullOrEmpty(descricao))
                 return p => true;
 
-            return p => p.Descricao.Contains(descricao);
+            return p => p.Descricao.ToLower().Contains(descricao.ToLower());
         }
     }
 }

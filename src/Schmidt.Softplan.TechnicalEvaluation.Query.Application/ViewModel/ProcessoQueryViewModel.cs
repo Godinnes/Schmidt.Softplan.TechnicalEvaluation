@@ -2,6 +2,7 @@
 using Schmidt.Softplan.TechnicalEvaluation.Query.Model.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.ViewModel
 {
@@ -9,7 +10,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.ViewModel
     {
         public Guid ID { get; set; }
         public string NumeroProcessoUnificado { get; set; }
-        public DateTime Distribuicao { get; set; }
+        public DateTime? Distribuicao { get; set; }
         public bool SegredoJuridico { get; set; }
         public string PastaFisicaCliente { get; set; }
         public string Descricao { get; set; }
@@ -26,7 +27,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.ViewModel
                 PastaFisicaCliente = processo.PastaFisicaCliente,
                 Descricao = processo.Descricao,
                 Situacao = processo.Situacao,
-                Responsaveis = processo.Responsaveis.ToViewModel()
+                Responsaveis = processo.ProcessoResponsaveis.Select(a => a.Responsavel.ToViewModel())
             };
         }
     }

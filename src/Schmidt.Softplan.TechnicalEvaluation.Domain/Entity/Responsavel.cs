@@ -15,7 +15,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
         public string CPF { get; private set; }
         public string Email { get; private set; }
         public string Foto { get; private set; }
-        public IEnumerable<Processo> Processos { get; private set; }
+        public IEnumerable<ProcessoResponsavel> ProcessoResponsaveis { get; private set; }
         private Responsavel() { }
         private Responsavel(Guid id,
                             string nome,
@@ -56,9 +56,9 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Domain.Entity
         }
         public void AddProcesso(Processo processo)
         {
-            var processos = Processos?.ToList() ?? new List<Processo>();
-            processos.Add(processo);
-            Processos = processos;
+            var processosResponsaveis = ProcessoResponsaveis?.ToList() ?? new List<ProcessoResponsavel>();
+            processosResponsaveis.Add(ProcessoResponsavel.Create(processo.ID, ID));
+            ProcessoResponsaveis = processosResponsaveis;
         }
         private string ValidCPF(string cpf)
         {

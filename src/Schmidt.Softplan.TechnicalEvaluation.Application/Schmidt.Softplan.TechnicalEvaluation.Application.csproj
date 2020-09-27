@@ -1,7 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <VersionSuffix>$(VersionSuffix)</VersionSuffix>
+    <VersionPrefix>5.0.0</VersionPrefix>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Schmidt.Softplan.TechnicalEvaluation.Application</AssemblyName>
+    <PackageId>Schmidt.Softplan.TechnicalEvaluation.Application</PackageId>
+
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
   </PropertyGroup>
 
   <ItemGroup>

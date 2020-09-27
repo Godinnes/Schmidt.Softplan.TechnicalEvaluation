@@ -24,17 +24,18 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.Query.Processos
 
             var processos = await _repository.Processos
                 .Include(a => a.Situacao)
-                .Include(a => a.Responsaveis)
+                .Include(a => a.ProcessoResponsaveis)
+                    .ThenInclude(a => a.Responsavel)
                 .Where(ProcessoSpecification.ProcessoDestribuicaoBetween(request.InicioDistribuicao, request.FimDistribuicao))
                 .Where(ProcessoSpecification.ProcessoNumeroProcessoUnificado(request.NumeroProcessoUnificado))
                 .Where(ProcessoSpecification.ProcessoResponsavel(request.Responsavel))
                 .Where(ProcessoSpecification.ProcessoSituacao(request.SituacaoID))
                 .Where(ProcessoSpecification.ProcessoPastaFisicaPessoa(request.PastaFisicaCliente))
                 .Where(ProcessoSpecification.ProcessoSegredoJustica(request.SegredoJustica))
-                .Where(ProcessoSpecification.ProcessoResponsavel(request.Descricao))
+                .Where(ProcessoSpecification.ProcessoDescricao(request.Descricao))
                 .Skip(skip)
                 .Take(take)
-                .Select(p => p.ToViewModel())
+                .Select(a => a.ToViewModel())
                 .ToListAsync();
 
             return processos;
