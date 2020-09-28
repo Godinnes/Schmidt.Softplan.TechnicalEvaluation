@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.Common\Schmidt.Softplan.TechnicalEvaluation.Common.csproj" />
     <ProjectReference Include="..\Schmidt.Softplan.TechnicalEvaluation.Query.Model\Schmidt.Softplan.TechnicalEvaluation.Query.Model.csproj" />
   </ItemGroup>
 

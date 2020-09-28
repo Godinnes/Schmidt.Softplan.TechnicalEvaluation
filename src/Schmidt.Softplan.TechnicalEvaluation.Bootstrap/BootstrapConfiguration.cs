@@ -44,9 +44,11 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Bootstrap
             });
 
             services.AddScoped<IProcessoRepository, ProcessoRepository>();
+            services.AddScoped<IProcessoHierarchyRepository, ProcessoHierarchyRepository>();
             services.AddScoped<IResponsavelRepository, ResponsavelRepository>();
             services.AddScoped<ISituacaoRepository, SituacaoRepository>();
             services.AddScoped<IQueryRepository, QueryRepository>();
+            services.AddScoped<IProcessoHierarchyQueryRepository, ProcessoHierarchyQueryRepository>();
             services.AddScoped<IDateTimeService, DateTimeService>();
         }
         private static string GetConnectionString(this IConfiguration configuration) => configuration["Database:ConnectionString"];

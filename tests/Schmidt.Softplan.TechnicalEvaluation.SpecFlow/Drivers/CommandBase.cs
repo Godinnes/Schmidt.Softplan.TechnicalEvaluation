@@ -7,9 +7,11 @@ using Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction;
 using Schmidt.Softplan.TechnicalEvaluation.Data.Repository;
 using Schmidt.Softplan.TechnicalEvaluation.Domain.Abstraction;
 using Schmidt.Softplan.TechnicalEvaluation.Domain.DomainEventsHandler.Processos;
+using Schmidt.Softplan.TechnicalEvaluation.Domain.Entity;
 using Schmidt.Softplan.TechnicalEvaluation.EmailSender.Interface;
 using Schmidt.Softplan.TechnicalEvaluation.Mediator.Extensions;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using TechTalk.SpecFlow;
 
@@ -38,11 +40,34 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Drivers
                     NumberEmailSended = emails.Count();
                 });
 
+            var hierarchyRepositoryMock = new Mock<IProcessoHierarchyRepository>();
+            hierarchyRepositoryMock
+                .Setup(a => a.ProcessosFamilyAsync(It.IsAny<Guid>()))
+                .ReturnsAsync((Guid id) =>
+                {
+                    var context = ServiceProvider.GetRequiredService<SchmidtContext>();
+                    var processosEntity = context.Set<Processo>().ToList();
+                    var processoEntity = processosEntity.First(a => a.ID == id);
+                    return SearchChildren(processoEntity, processosEntity);
+
+                    IEnumerable<Guid> SearchChildren(Processo processo, IEnumerable<Processo> processos)
+                    {
+                        var processosIDs = new List<Guid>();
+                        processosIDs.Add(processo.ID);
+                        foreach (var child in processos.Where(a => a.ProcessoPaiID == processo.ID))
+                        {
+                            processosIDs.AddRange(SearchChildren(child, processos));
+                        }
+                        return processosIDs;
+                    }
+                });
+
             serviceCollection.AddScoped<IProcessoRepository, ProcessoRepository>();
             serviceCollection.AddScoped<IResponsavelRepository, ResponsavelRepository>();
             serviceCollection.AddScoped<ISituacaoRepository, SituacaoRepository>();
             serviceCollection.AddScoped((a) => mockedDateTimeService.Object);
             serviceCollection.AddScoped((a) => mockedEmailSender.Object);
+            serviceCollection.AddScoped((a) => hierarchyRepositoryMock.Object);
 
             var serviceProvider = new ServiceCollection()
             .AddEntityFrameworkInMemoryDatabase()

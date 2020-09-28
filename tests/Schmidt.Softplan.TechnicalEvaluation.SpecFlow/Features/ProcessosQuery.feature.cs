@@ -128,7 +128,8 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Features
                         "SegredoJustica",
                         "Pasta",
                         "Situacao",
-                        "Responsaveis"});
+                        "Responsaveis",
+                        "ProcessoPai"});
             table5.AddRow(new string[] {
                         "3513042-04.2016.8.19.0423",
                         "Primeiro Processo",
@@ -136,7 +137,8 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Features
                         "Não",
                         "caminho de pasta",
                         "Em andamento",
-                        "Benício Heitor Galvão, Elisa Nina Marlene Castro"});
+                        "Benício Heitor Galvão, Elisa Nina Marlene Castro",
+                        ""});
             table5.AddRow(new string[] {
                         "3513040-04.2016.8.19.0421",
                         "Segundo Processo",
@@ -144,7 +146,8 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Features
                         "Não",
                         "",
                         "Desmenbrado",
-                        "Raimunda Laura Farias, Carolina Clarice Moreira"});
+                        "Raimunda Laura Farias, Carolina Clarice Moreira",
+                        "3513042-04.2016.8.19.0423"});
             table5.AddRow(new string[] {
                         "3513040-04.2016.8.19.0422",
                         "Terceiro Processo",
@@ -152,7 +155,8 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Features
                         "Não",
                         "",
                         "Desmenbrado",
-                        "Raimunda Laura Farias"});
+                        "Raimunda Laura Farias",
+                        "3513040-04.2016.8.19.0421"});
             table5.AddRow(new string[] {
                         "3513040-04.2016.8.19.0425",
                         "Quarto Processo",
@@ -160,7 +164,8 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Features
                         "Não",
                         "",
                         "Em recurso",
-                        "Raimunda Laura Farias, Benício Heitor Galvão , Carolina Clarice Moreira"});
+                        "Raimunda Laura Farias, Benício Heitor Galvão , Carolina Clarice Moreira",
+                        "3513040-04.2016.8.19.0422"});
 #line 19
  testRunner.Given("The follow processos", ((string)(null)), table5, "Given ");
 #line hidden
@@ -476,6 +481,84 @@ this.FeatureBackground();
 #line hidden
 #line 57
  testRunner.Then("possuo 3 processos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Busco por um processo onde ele possui processos filhos", SourceLine=58)]
+        public virtual void BuscoPorUmProcessoOndeElePossuiProcessosFilhos()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Busco por um processo onde ele possui processos filhos", null, tagsOfScenario, argumentsOfScenario);
+#line 59
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 60
+ testRunner.Given("busco pelo processo \'3513042-04.2016.8.19.0423\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 61
+ testRunner.Then("possuo 1 processo, 0 vinculado e 3 filhos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Busco por um processo onde ele possui um processo vinculado e processos filhos", SourceLine=62)]
+        public virtual void BuscoPorUmProcessoOndeElePossuiUmProcessoVinculadoEProcessosFilhos()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Busco por um processo onde ele possui um processo vinculado e processos filhos", null, tagsOfScenario, argumentsOfScenario);
+#line 63
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 64
+ testRunner.Given("busco pelo processo \'3513040-04.2016.8.19.0421\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 65
+ testRunner.Then("possuo 1 processo, 1 vinculado e 2 filhos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -40,9 +40,14 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Drivers
         }
         public DateTime? TryParseDateTime(string dateString)
         {
-            var dateResult = DateTime.Now;
-            if (DateTime.TryParseExact(dateString, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dateResult))
+            if (DateTime.TryParseExact(dateString, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out var dateResult))
                 return dateResult;
+            return null;
+        }
+        public Guid? TryParseGuid(string guid)
+        {
+            if (Guid.TryParse(guid, out var parsedGuid))
+                return parsedGuid;
             return null;
         }
         public bool ParseSimNao(string value) => value?.ToLower() == "sim";
@@ -63,15 +68,25 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Drivers
             }
             set { ScenarioContext.Set(value, nameof(Responsaveis)); }
         }
-        public IEnumerable<ProcessoQueryViewModel> Processos
+        public IEnumerable<ProcessoQueryViewModel> ProcessosQueryViewModel
         {
             get
             {
-                if (ScenarioContext.TryGetValue<IEnumerable<ProcessoQueryViewModel>>(nameof(Processos), out var processos))
+                if (ScenarioContext.TryGetValue<IEnumerable<ProcessoQueryViewModel>>(nameof(ProcessosQueryViewModel), out var processos))
                     return processos;
                 return new List<ProcessoQueryViewModel>();
             }
-            set { ScenarioContext.Set(value, nameof(Processos)); }
+            set { ScenarioContext.Set(value, nameof(ProcessosQueryViewModel)); }
+        }
+        public ProcessoViewModel ProcessoViewModel
+        {
+            get
+            {
+                if (ScenarioContext.TryGetValue<ProcessoViewModel>(nameof(ProcessoViewModel), out var processo))
+                    return processo;
+                return null;
+            }
+            set { ScenarioContext.Set(value, nameof(ProcessoViewModel)); }
         }
         public Guid ResponsavelID
         {

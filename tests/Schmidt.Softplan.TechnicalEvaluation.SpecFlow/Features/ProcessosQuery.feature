@@ -17,11 +17,11 @@ Background:
 		| Elisa Nina Marlene Castro | 159.943.355-92 | elisaninamarlenecastro__elisaninamarlenecastro@doublemoore.com |
 		| Raimunda Laura Farias     | 080.629.132-01 | raimundalaurafarias_@fepextrusao.com.br                        |
 	Given The follow processos
-		| NumeroProcessoUnificado   | Descricao         | Distribuicao | SegredoJustica | Pasta            | Situacao     | Responsaveis                                                            |
-		| 3513042-04.2016.8.19.0423 | Primeiro Processo | 01/05/2020   | Não            | caminho de pasta | Em andamento | Benício Heitor Galvão, Elisa Nina Marlene Castro                        |
-		| 3513040-04.2016.8.19.0421 | Segundo Processo  | 02/06/2020   | Não            |                  | Desmenbrado  | Raimunda Laura Farias, Carolina Clarice Moreira                         |
-		| 3513040-04.2016.8.19.0422 | Terceiro Processo | 01/10/2019   | Não            |                  | Desmenbrado  | Raimunda Laura Farias                                                   |
-		| 3513040-04.2016.8.19.0425 | Quarto Processo   |              | Não            |                  | Em recurso   | Raimunda Laura Farias, Benício Heitor Galvão , Carolina Clarice Moreira |
+		| NumeroProcessoUnificado   | Descricao         | Distribuicao | SegredoJustica | Pasta            | Situacao     | Responsaveis                                                            | ProcessoPai               |
+		| 3513042-04.2016.8.19.0423 | Primeiro Processo | 01/05/2020   | Não            | caminho de pasta | Em andamento | Benício Heitor Galvão, Elisa Nina Marlene Castro                        |                           |
+		| 3513040-04.2016.8.19.0421 | Segundo Processo  | 02/06/2020   | Não            |                  | Desmenbrado  | Raimunda Laura Farias, Carolina Clarice Moreira                         | 3513042-04.2016.8.19.0423 |
+		| 3513040-04.2016.8.19.0422 | Terceiro Processo | 01/10/2019   | Não            |                  | Desmenbrado  | Raimunda Laura Farias                                                   | 3513040-04.2016.8.19.0421 |
+		| 3513040-04.2016.8.19.0425 | Quarto Processo   |              | Não            |                  | Em recurso   | Raimunda Laura Farias, Benício Heitor Galvão , Carolina Clarice Moreira | 3513040-04.2016.8.19.0422 |
 
 Scenario: Busco por todos os processos
 	Given busca por todos
@@ -55,3 +55,11 @@ Scenario: Busco por processos informando uma situação
 Scenario: Busco por processos informando parte do nome do responsável
 	Given busca pelo responsável 'Farias'
 	Then possuo 3 processos
+
+Scenario: Busco por um processo onde ele possui processos filhos
+	Given busco pelo processo '3513042-04.2016.8.19.0423'
+	Then possuo 1 processo, 0 vinculado e 3 filhos
+
+Scenario: Busco por um processo onde ele possui um processo vinculado e processos filhos
+	Given busco pelo processo '3513040-04.2016.8.19.0421'
+	Then possuo 1 processo, 1 vinculado e 2 filhos

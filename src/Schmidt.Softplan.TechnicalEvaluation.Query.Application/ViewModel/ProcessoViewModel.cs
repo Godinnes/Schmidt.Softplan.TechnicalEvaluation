@@ -17,6 +17,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.ViewModel
         public SituacaoQueryViewModel Situacao { get; set; }
         public ProcessoViewModel ProcessoVinculado { get; set; }
         public IEnumerable<ResponsavelQueryViewModel> Responsaveis { get; set; }
+        public IEnumerable<ProcessoViewModel> ProcessosFilhos { get; set; }
         public static implicit operator ProcessoViewModel(Processo processo)
         {
             if (processo == null)
