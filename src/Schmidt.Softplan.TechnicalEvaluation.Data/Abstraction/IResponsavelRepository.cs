@@ -1,7 +1,6 @@
 ﻿using Schmidt.Softplan.TechnicalEvaluation.Domain.Entity;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
@@ -14,6 +13,6 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
         void Remove(Responsavel responsavel);
         Task SaveChangesAsync();
         bool ExistsCPF(Guid id, string cpf);
-        IQueryable<Responsavel> Entities { get; }
+        Task<bool> HasProcessoAsync(Guid id);
     }
 }

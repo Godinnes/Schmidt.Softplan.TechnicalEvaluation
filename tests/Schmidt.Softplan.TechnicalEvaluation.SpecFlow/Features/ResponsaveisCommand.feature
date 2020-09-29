@@ -38,3 +38,9 @@ Scenario: Cadastrando duas vezes um responsável com mesmo CPF
 	Given a responsavel 'Vitória Aurora Moreira', CPF '885.056.705-74', Email 'vitoriaauroramoreira_@a-qualitybrasil.com.br'
 	And a responsavel 'Joana Isis Assunção', CPF '885.056.705-74', Email 'joanaisisassuncao..joanaisisassuncao@devuono.com.br'
 	Then I have a exception 'Já existe um responsável com este CPF.'
+
+Scenario: Cadastrando um responsável, crio um processo para ele e depois tento remover o resposável
+	Given a responsavel 'Vitória Aurora Moreira', CPF '885.056.705-74', Email 'vitoriaauroramoreira_@a-qualitybrasil.com.br'
+	And vinculo um processo
+	When removo o responsável
+	Then I have a exception 'Não é possível remover um responsável que esteja vinculado a um processo.'

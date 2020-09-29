@@ -27,13 +27,6 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
         {
             return await Entity.FindAsync(id);
         }
-        public IQueryable<TEntity> Entities
-        {
-            get
-            {
-                return Entity.AsNoTracking();
-            }
-        }
         public virtual void Add(TEntity entity)
         {
             Entity.Add(entity);

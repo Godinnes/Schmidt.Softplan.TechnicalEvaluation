@@ -32,5 +32,6 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Repository
             entity.AddDomainEvent(new RemoveResponsavelDomainEvent(entity));
             base.Remove(entity);
         }
+        public async Task<bool> HasProcessoAsync(Guid id) => await Entity.AnyAsync(a => a.ProcessoResponsaveis.Any(i => i.ResponsavelID == id));
     }
 }

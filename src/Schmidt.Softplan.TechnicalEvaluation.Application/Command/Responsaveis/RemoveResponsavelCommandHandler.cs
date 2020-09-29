@@ -1,7 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction;
+﻿using Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction;
 using Schmidt.Softplan.TechnicalEvaluation.Mediator.Abstraction;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Schmidt.Softplan.TechnicalEvaluation.Application.Command.Responsaveis
@@ -15,12 +13,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Application.Command.Responsaveis
         }
         public async override Task HandleAsync(RemoveResponsavelCommand request)
         {
-            var responsavel = await _repository.Entities
-                .Include(a => a.ProcessoResponsaveis)
-                .ThenInclude(a => a.Processo)
-                .Where(a => a.ID == request.ID)
-                .FirstOrDefaultAsync();
-
+            var responsavel = await _repository.FindAsync(request.ID);
             _repository.Remove(responsavel);
             await _repository.SaveChangesAsync();
         }
