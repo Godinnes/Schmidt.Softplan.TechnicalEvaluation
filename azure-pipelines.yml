@@ -28,11 +28,6 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
-    - task: VSTest@2
-      inputs:
-        testSelector: 'testRun'
-        searchFolder: '$(System.DefaultWorkingDirectory)\tests'
-        codeCoverageEnabled: true
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
