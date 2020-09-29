@@ -10,7 +10,7 @@ WORKDIR /src
 COPY ["Schmidt.Softplan.Api.csproj", "src/Schmidt.Softplan.Api/"]
 RUN dotnet restore "src/Schmidt.Softplan.Api/Schmidt.Softplan.Api.csproj"
 COPY . .
-WORKDIR "Schmidt.Softplan.Api"
+WORKDIR "/src/Schmidt.Softplan.Api"
 RUN dotnet build "Schmidt.Softplan.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
