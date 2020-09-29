@@ -132,6 +132,9 @@
   <data name="ProcessoDescricaoMaxLengthException" xml:space="preserve">
     <value>Descrição não pode teer mais de {0} caracteres.</value>
   </data>
+  <data name="ProcessoHierarchyMaxLenghtException" xml:space="preserve">
+    <value>A hieraquia de processo deve ter no máximo {0} níveis.</value>
+  </data>
   <data name="ProcessoIsFinalizedSituacaoException" xml:space="preserve">
     <value>Processo está com a situação finalizada.</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="ProcessoNumeroProcessoUnificadoNullException" xml:space="preserve">
     <value>Número de processo unificado é obrigatório.</value>
+  </data>
+  <data name="ProcessoParentAlreadyVinculedException" xml:space="preserve">
+    <value>Não pode vincular um processo na mesma hierarquia.</value>
   </data>
   <data name="ProcessoPastaFisicaClienteMaxLengthException" xml:space="preserve">
     <value>Pasta física cliente não pode ter mais de {0} caracteres.</value>

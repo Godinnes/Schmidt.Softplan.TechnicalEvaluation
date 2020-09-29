@@ -690,6 +690,240 @@ this.FeatureBackground();
             }
             this.ScenarioCleanup();
         }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar dois processos ao mesmo processo pai", SourceLine=78)]
+        public virtual void CadastrarDoisProcessosAoMesmoProcessoPai()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar dois processos ao mesmo processo pai", null, tagsOfScenario, argumentsOfScenario);
+#line 79
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 80
+ testRunner.Given("a processo número \'3513042-04.2016.8.19.0423\', descrição \'Processo pai\', Situacao" +
+                        " \'Em andamento\', Responsáveis \'Carolina Clarice Moreira, Benício Heitor Galvão\'," +
+                        " Pasta do cliente \'CaminhoPasta\', data de distribuição \'27/09/2020\' e Segredo de" +
+                        " justiça \'Não\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 81
+ testRunner.And(@"a processo número '3513042-04.2016.8.19.0422', descrição 'Processo filho', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020', Segredo de justiça 'Não' e processo pai '3513042-04.2016.8.19.0423'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 82
+ testRunner.And(@"a processo número '3513042-04.2016.8.19.0421', descrição 'Processo filho ao mesmo pai', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020', Segredo de justiça 'Não' e processo pai '3513042-04.2016.8.19.0423'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 83
+ testRunner.Then("I have a exception \'Não pode vincular um processo na mesma hierarquia.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Cadastrar vários processos ao na hierarquia", SourceLine=84)]
+        public virtual void CadastrarVariosProcessosAoNaHierarquia()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar vários processos ao na hierarquia", null, tagsOfScenario, argumentsOfScenario);
+#line 85
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 86
+ testRunner.Given("a processo número \'3513042-04.2016.8.19.0423\', descrição \'Processo avo\', Situacao" +
+                        " \'Em andamento\', Responsáveis \'Carolina Clarice Moreira, Benício Heitor Galvão\'," +
+                        " Pasta do cliente \'CaminhoPasta\', data de distribuição \'27/09/2020\' e Segredo de" +
+                        " justiça \'Não\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 87
+ testRunner.And(@"a processo número '3513042-04.2016.8.19.0422', descrição 'Processo pai', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020', Segredo de justiça 'Não' e processo pai '3513042-04.2016.8.19.0423'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 88
+ testRunner.And(@"a processo número '3513042-04.2016.8.19.0421', descrição 'Processo filho', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020', Segredo de justiça 'Não' e processo pai '3513042-04.2016.8.19.0422'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 89
+ testRunner.And(@"a processo número '3513042-04.2016.8.19.0420', descrição 'Processo neto', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020', Segredo de justiça 'Não' e processo pai '3513042-04.2016.8.19.0421'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 90
+ testRunner.And(@"a processo número '3513042-04.2016.8.19.0419', descrição 'Processo metido', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020', Segredo de justiça 'Não' e processo pai '3513042-04.2016.8.19.0420'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 91
+ testRunner.Then("I have a exception \'A hieraquia de processo deve ter no máximo 4 níveis.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Remover um processo", SourceLine=92)]
+        public virtual void RemoverUmProcesso()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remover um processo", null, tagsOfScenario, argumentsOfScenario);
+#line 93
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 94
+ testRunner.Given(@"a processo número '3513042-04.2016.8.19.0423', descrição 'Processo remover', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 95
+ testRunner.When("eu removo o processo \'3513042-04.2016.8.19.0423\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 96
+ testRunner.Then("processo \'3513042-04.2016.8.19.0423\' foi removido", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Remover um processo que foi alterado para finalizado", SourceLine=97)]
+        public virtual void RemoverUmProcessoQueFoiAlteradoParaFinalizado()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remover um processo que foi alterado para finalizado", null, tagsOfScenario, argumentsOfScenario);
+#line 98
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 99
+ testRunner.Given(@"a processo número '3513042-04.2016.8.19.0423', descrição 'Processo remover', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 100
+ testRunner.When(@"atualizo o processo número '3513042-04.2016.8.19.0423', descrição 'Processo remover finalizado', Situacao 'Finalizado', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão, Elisa Nina Marlene Castro', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 101
+ testRunner.And("eu removo o processo \'3513042-04.2016.8.19.0423\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 102
+ testRunner.Then("I have a exception \'Processo está com a situação finalizada.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Remover um processo pai", SourceLine=103)]
+        public virtual void RemoverUmProcessoPai()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remover um processo pai", null, tagsOfScenario, argumentsOfScenario);
+#line 104
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 105
+ testRunner.Given(@"a processo número '3513042-04.2016.8.19.0423', descrição 'Processo remover', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 106
+ testRunner.And(@"a processo número '3513042-04.2016.8.19.0422', descrição 'Processo pai', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020', Segredo de justiça 'Não' e processo pai '3513042-04.2016.8.19.0423'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 107
+ testRunner.When("eu removo o processo \'3513042-04.2016.8.19.0423\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 108
+ testRunner.Then("I have a exception \'Não é possível remover processo que seja pai de outro.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

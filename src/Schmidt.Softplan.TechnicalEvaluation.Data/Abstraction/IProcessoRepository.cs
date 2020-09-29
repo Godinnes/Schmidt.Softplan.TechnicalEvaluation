@@ -13,5 +13,6 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Abstraction
         bool HasNumeroProcessoUnificado(Guid id, string numeroProcessoUnificado);
         Task<Processo> FindChildAsync(Guid id);
         Task<bool> HasChildAsync(Guid id);
+        Task<bool> HasProcessoParentVinculedAsync(Guid id, Guid parentID);
     }
 }

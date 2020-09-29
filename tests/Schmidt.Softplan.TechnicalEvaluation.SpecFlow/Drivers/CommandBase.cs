@@ -47,7 +47,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Drivers
                 {
                     var context = ServiceProvider.GetRequiredService<SchmidtContext>();
                     var processosEntity = context.Set<Processo>().ToList();
-                    var processoEntity = processosEntity.First(a => a.ID == id);
+                    var processoEntity = SearchGrandfather(processosEntity.First(a => a.ID == id), processosEntity);
                     return SearchChildren(processoEntity, processosEntity);
 
                     IEnumerable<Guid> SearchChildren(Processo processo, IEnumerable<Processo> processos)
@@ -59,6 +59,12 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Drivers
                             processosIDs.AddRange(SearchChildren(child, processos));
                         }
                         return processosIDs;
+                    }
+                    Processo SearchGrandfather(Processo processo, IEnumerable<Processo> processos)
+                    {
+                        if (!processo.ProcessoPaiID.HasValue)
+                            return processo;
+                        return SearchGrandfather(processos.First(a => a.ID == processo.ProcessoPaiID.Value), processos);
                     }
                 });
 

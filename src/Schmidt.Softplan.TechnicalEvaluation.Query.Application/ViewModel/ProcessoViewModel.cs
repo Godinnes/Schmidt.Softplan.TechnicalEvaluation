@@ -31,7 +31,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.ViewModel
                 PastaFisicaCliente = processo.PastaFisicaCliente,
                 Descricao = processo.Descricao,
                 Situacao = processo.Situacao,
-                ProcessoVinculado = processo.ProcessoVinculado.ToViewModel(),
+                ProcessoVinculado = processo.ProcessoVinculado?.ToViewModel(),
                 Responsaveis = processo.ProcessoResponsaveis.Select(a => a.Responsavel.ToQueryViewModel())
             };
         }

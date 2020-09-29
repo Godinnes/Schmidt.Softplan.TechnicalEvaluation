@@ -29,23 +29,14 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Query.Application.Query.Processos
                 .Include(a => a.Situacao)
                 .Include(a => a.ProcessoResponsaveis)
                     .ThenInclude(a => a.Responsavel)
-                .Include(a => a.ProcessoVinculado)
-                    .ThenInclude(a => a.Situacao)
-                 .Include(a => a.ProcessoVinculado)
-                    .ThenInclude(a => a.ProcessoResponsaveis)
-                        .ThenInclude(a => a.Responsavel)
-                .Include(a => a.ProcessoVinculado)
-                    .ThenInclude(a => a.ProcessoVinculado)
-                        .ThenInclude(a => a.Situacao)
-                .Include(a => a.ProcessoVinculado)
-                    .ThenInclude(a => a.ProcessoVinculado)
-                        .ThenInclude(a => a.ProcessoResponsaveis)
-                            .ThenInclude(a => a.Responsavel)
                 .Where(a => processosIDs.Contains(a.ID))
                 .ToListAsync();
 
             var selectedProcesso = processos.First(a => a.ID == request.ID);
             var processoViewModel = selectedProcesso.ToViewModel();
+            if (selectedProcesso.ProcessoPaiID.HasValue)
+                processoViewModel.ProcessoVinculado = processos.First(a => a.ID == selectedProcesso.ProcessoPaiID.Value).ToViewModel();
+
             processoViewModel.ProcessosFilhos = ProcessoHierarcky(selectedProcesso, processos);
 
             return processoViewModel;

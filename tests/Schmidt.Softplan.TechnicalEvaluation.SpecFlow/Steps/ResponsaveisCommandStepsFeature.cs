@@ -38,6 +38,7 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
                 AddException(ex);
             }
         }
+
         [Then(@"I have a responsavel")]
         public async Task ThenIHaveAResponsavel()
         {
@@ -45,12 +46,12 @@ namespace Schmidt.Softplan.TechnicalEvaluation.SpecFlow.Steps
             var responsavel = await repository.FindAsync(ResponsavelID);
             Assert.NotNull(responsavel);
         }
+
         [Then(@"I have a exception '(.*)'")]
         public void ThenIHaveAException(string message)
         {
             Assert.AreEqual(message, ExpectedExceptions.First().Message);
         }
-
     }
 }
 

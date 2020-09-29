@@ -75,3 +75,34 @@ Scenario: Cadastrar um processo onde irei atualizá-lo e deve enviar mais um e-m
 	Given a processo número '3513042-04.2016.8.19.0423', descrição 'Processo e-mail', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'
 	When atualizo o processo número '3513042-04.2016.8.19.0423', descrição 'Processo informar e-mail', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão, Elisa Nina Marlene Castro', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'
 	Then I sended 1 e-mails
+
+Scenario: Cadastrar dois processos ao mesmo processo pai
+	Given a processo número '3513042-04.2016.8.19.0423', descrição 'Processo pai', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'
+	And a processo número '3513042-04.2016.8.19.0422', descrição 'Processo filho', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020', Segredo de justiça 'Não' e processo pai '3513042-04.2016.8.19.0423'
+	And a processo número '3513042-04.2016.8.19.0421', descrição 'Processo filho ao mesmo pai', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020', Segredo de justiça 'Não' e processo pai '3513042-04.2016.8.19.0423'
+	Then I have a exception 'Não pode vincular um processo na mesma hierarquia.'
+
+Scenario: Cadastrar vários processos ao na hierarquia
+	Given a processo número '3513042-04.2016.8.19.0423', descrição 'Processo avo', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'
+	And a processo número '3513042-04.2016.8.19.0422', descrição 'Processo pai', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020', Segredo de justiça 'Não' e processo pai '3513042-04.2016.8.19.0423'
+	And a processo número '3513042-04.2016.8.19.0421', descrição 'Processo filho', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020', Segredo de justiça 'Não' e processo pai '3513042-04.2016.8.19.0422'
+	And a processo número '3513042-04.2016.8.19.0420', descrição 'Processo neto', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020', Segredo de justiça 'Não' e processo pai '3513042-04.2016.8.19.0421'
+	And a processo número '3513042-04.2016.8.19.0419', descrição 'Processo metido', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020', Segredo de justiça 'Não' e processo pai '3513042-04.2016.8.19.0420'
+	Then I have a exception 'A hieraquia de processo deve ter no máximo 4 níveis.'
+
+Scenario: Remover um processo
+	Given a processo número '3513042-04.2016.8.19.0423', descrição 'Processo remover', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'
+	When eu removo o processo '3513042-04.2016.8.19.0423'
+	Then processo '3513042-04.2016.8.19.0423' foi removido
+
+Scenario: Remover um processo que foi alterado para finalizado
+	Given a processo número '3513042-04.2016.8.19.0423', descrição 'Processo remover', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'
+	When atualizo o processo número '3513042-04.2016.8.19.0423', descrição 'Processo remover finalizado', Situacao 'Finalizado', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão, Elisa Nina Marlene Castro', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'
+	And eu removo o processo '3513042-04.2016.8.19.0423'
+	Then I have a exception 'Processo está com a situação finalizada.'
+
+Scenario: Remover um processo pai
+	Given a processo número '3513042-04.2016.8.19.0423', descrição 'Processo remover', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020' e Segredo de justiça 'Não'
+	And a processo número '3513042-04.2016.8.19.0422', descrição 'Processo pai', Situacao 'Em andamento', Responsáveis 'Carolina Clarice Moreira, Benício Heitor Galvão', Pasta do cliente 'CaminhoPasta', data de distribuição '27/09/2020', Segredo de justiça 'Não' e processo pai '3513042-04.2016.8.19.0423'
+	When eu removo o processo '3513042-04.2016.8.19.0423'
+	Then I have a exception 'Não é possível remover processo que seja pai de outro.'

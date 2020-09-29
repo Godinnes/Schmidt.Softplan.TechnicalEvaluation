@@ -107,6 +107,15 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A hieraquia de processo deve ter no máximo {0} níveis..
+        /// </summary>
+        public static string ProcessoHierarchyMaxLenghtException {
+            get {
+                return ResourceManager.GetString("ProcessoHierarchyMaxLenghtException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Processo está com a situação finalizada..
         /// </summary>
         public static string ProcessoIsFinalizedSituacaoException {
@@ -148,6 +157,15 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Common.Resources {
         public static string ProcessoNumeroProcessoUnificadoNullException {
             get {
                 return ResourceManager.GetString("ProcessoNumeroProcessoUnificadoNullException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Não pode vincular um processo na mesma hierarquia..
+        /// </summary>
+        public static string ProcessoParentAlreadyVinculedException {
+            get {
+                return ResourceManager.GetString("ProcessoParentAlreadyVinculedException", resourceCulture);
             }
         }
         

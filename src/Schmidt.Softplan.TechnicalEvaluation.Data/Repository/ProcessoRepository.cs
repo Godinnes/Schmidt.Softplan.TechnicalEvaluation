@@ -35,5 +35,9 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Repository
         {
             return await Entity.AnyAsync(a => a.ProcessoPaiID == id);
         }
+        public async Task<bool> HasProcessoParentVinculedAsync(Guid id, Guid parentID)
+        {
+            return await Entity.AnyAsync(a => a.ID != id && a.ProcessoPaiID == parentID);
+        }
     }
 }
