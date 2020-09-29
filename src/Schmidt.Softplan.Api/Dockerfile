@@ -7,7 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["src/Schmidt.Softplan.Api/Schmidt.Softplan.Api.csproj", "Schmidt.Softplan.Api/"]
+COPY ["Schmidt.Softplan.Api/Schmidt.Softplan.Api.csproj", "Schmidt.Softplan.Api/"]
 RUN dotnet restore "Schmidt.Softplan.Api/Schmidt.Softplan.Api.csproj"
 COPY . .
 WORKDIR "/src/Schmidt.Softplan.Api"
