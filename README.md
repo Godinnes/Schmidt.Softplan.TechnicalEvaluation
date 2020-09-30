@@ -6,6 +6,7 @@ O intuito desse link é facilitar a avaliação, sem exigir que quem vá avaliar
 
 Desenvolvido com Visual Studio 2019 Community, o qual pode ser baixado no link: [Visual Studio](https://visualstudio.microsoft.com/pt-br/vs/community/).
 Baixar o Docker no link: [Docker](https://docs.docker.com/docker-for-windows/install/).
+
 Baixar o Git no link: [Git](https://github.com/git-for-windows/git/releases/download/v2.28.0.windows.1/Git-2.28.0-64-bit.exe).
 Para instalar, só precisa seguir os wizards de cada instalador.
 
