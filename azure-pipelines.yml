@@ -11,7 +11,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '92630dac-347c-48ce-b82c-491c76b0531f'
-  imageRepository: 'godinnesschmidtsoftplantechnicalevaluation'
+  imageRepository: 'marcelofsregistry/schmidt.softplan.technicalevaluation'
   containerRegistry: 'marcelofsregistry.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/src/Schmidt.Softplan.Api/Dockerfile'
   tag: '$(Build.BuildId)'
