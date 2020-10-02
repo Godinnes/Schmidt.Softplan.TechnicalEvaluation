@@ -16,7 +16,14 @@ namespace Schmidt.Softplan.TechnicalEvaluation.Data.Repository
             : base(context, serviceProvider)
         {
         }
-
+        public async override Task<Processo> FindAsync(Guid id)
+        {
+            return await Entity
+                .Include(a => a.Situacao)
+                .Include(a => a.ProcessoResponsaveis)
+                .ThenInclude(a => a.Responsavel)
+                .FirstOrDefaultAsync(a => a.ID == id);
+        }
         public override void Remove(Processo entity)
         {
             entity.AddDomainEvent(new RemoveProcessoDomainEvent(entity));
